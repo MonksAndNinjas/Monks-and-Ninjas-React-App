@@ -3,7 +3,10 @@ import React from 'react';
 class Home extends React.Component {
   render() {
     return (
-      <h1>Home!</h1>
+      <div>
+        <h1>Monks And Ninjas</h1>
+        <h2>Body Awareness Meditative Martial Arts Life Performance</h2>
+      </div>
     )
   }
 }
