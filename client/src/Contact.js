@@ -3,7 +3,13 @@ import React from 'react';
 class Contact extends React.Component {
   render() {
     return (
-      <h1>This is the contact page!</h1>
+      <div>
+        <h1>Contact</h1>
+
+        <p>Phone Number goes here</p>
+        <p>Email goes here</p>
+        <p>Location goes here</p>
+      </div>
     )
   }
 }
