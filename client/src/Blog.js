@@ -3,7 +3,15 @@ import React from 'react';
 class Blog extends React.Component {
   render() {
     return (
-      <h1>This is the blog page!</h1>
+      <div>
+        <h1>Blog</h1>
+
+        <section>Archives go here</section>
+
+        <section>Current or selected blog post goes here</section>
+
+        <section>Subscribe and social media option goes here</section>
+      </div>
     )
   }
 }
