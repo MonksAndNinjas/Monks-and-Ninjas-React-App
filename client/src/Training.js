@@ -1,6 +1,13 @@
 import React from 'react';
+import Calendar from 'react-calendar';
 
 class Training extends React.Component {
+  state = {
+    date: new Date(),
+  }
+
+  onChange = date => this.setState({ date })
+
   render() {
     return (
       <div>
@@ -10,10 +17,7 @@ class Training extends React.Component {
 
         <br/><br/>
 
-        <section>
-          Calendar should go here and switch off with description of service when button to
-          reserve is clicked.
-        </section>
+        <Calendar onChange={this.onChange} value={this.state.date} />
       </div>
     )
   }
