@@ -3,6 +3,7 @@ import Blog from './Blog.js';
 import BlogInput from './BlogInput.js';
 
 class BlogContainer extends React.Component {
+
   render() {
     return (
       <div>
