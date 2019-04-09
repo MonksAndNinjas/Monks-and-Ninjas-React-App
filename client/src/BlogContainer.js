@@ -1,12 +1,15 @@
 import React from 'react';
+import Blog from './Blog.js';
+import BlogInput from './BlogInput.js';
 
-class Blog extends React.Component {
+class BlogContainer extends React.Component {
   render() {
     return (
       <div>
         <h1>Blog</h1>
 
-        <section>Archives go here</section>
+        <BlogInput />
+        <Blog />
 
         <section>Current or selected blog post goes here</section>
 
@@ -16,4 +19,4 @@ class Blog extends React.Component {
   }
 }
 
-export default Blog;
+export default BlogContainer;
