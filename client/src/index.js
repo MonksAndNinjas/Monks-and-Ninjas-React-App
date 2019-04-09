@@ -7,6 +7,7 @@ import About from './About';
 import TrainingContainer from './containers/TrainingContainer';
 import BlogContainer from './containers/BlogContainer';
 import Contact from './Contact';
+import SocialMedia from './components/SocialMedia';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -21,6 +22,9 @@ const Navbar = () =>
     <NavLink to="/contact" exact activeStyle={{ background: 'darkblue' }}>Contact</NavLink>
   </div>;
 
+const Footer = () =>
+  <footer><SocialMedia /></footer>;
+
 ReactDOM.render((
   <Router>
     <React.Fragment>
@@ -30,6 +34,7 @@ ReactDOM.render((
       <Route exact path="/training" component={TrainingContainer} />
       <Route exact path="/blog" component={BlogContainer} />
       <Route exact path="/contact" component={Contact} />
+      <Footer />
     </React.Fragment>
   </Router>),
   document.getElementById('root')

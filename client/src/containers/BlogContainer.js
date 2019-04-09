@@ -13,8 +13,6 @@ class BlogContainer extends React.Component {
         <Blog />
 
         <section>Current or selected blog post goes here</section>
-
-        <section>Subscribe and social media option goes here</section>
       </div>
     )
   }
