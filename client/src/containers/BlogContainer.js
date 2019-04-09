@@ -1,6 +1,6 @@
 import React from 'react';
-import Blog from './Blog.js';
-import BlogInput from './BlogInput.js';
+import Blog from '../components/Blog.js';
+import BlogInput from '../components/BlogInput.js';
 
 class BlogContainer extends React.Component {
 

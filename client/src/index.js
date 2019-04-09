@@ -5,7 +5,7 @@ import './index.css';
 import Home from './Home';
 import About from './About';
 import Training from './Training';
-import BlogContainer from './BlogContainer';
+import BlogContainer from './containers/BlogContainer';
 import Contact from './Contact';
 
 import * as serviceWorker from './serviceWorker';
