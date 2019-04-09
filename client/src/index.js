@@ -4,7 +4,7 @@ import './index.css';
 
 import Home from './Home';
 import About from './About';
-import Training from './Training';
+import TrainingContainer from './containers/TrainingContainer';
 import BlogContainer from './containers/BlogContainer';
 import Contact from './Contact';
 
@@ -27,7 +27,7 @@ ReactDOM.render((
       <Navbar />
       <Route exact path="/" component={Home} />
       <Route exact path="/about" component={About} />
-      <Route exact path="/training" component={Training} />
+      <Route exact path="/training" component={TrainingContainer} />
       <Route exact path="/blog" component={BlogContainer} />
       <Route exact path="/contact" component={Contact} />
     </React.Fragment>
