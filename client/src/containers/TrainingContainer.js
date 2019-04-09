@@ -1,5 +1,6 @@
 import React from 'react';
 import Reservation from '../components/Reservation.js';
+import Services from '../components/Services.js';
 
 class TrainingContainer extends React.Component {
 
@@ -8,8 +9,7 @@ class TrainingContainer extends React.Component {
       <div>
         <h1>Training</h1>
 
-        <span>Type of Service: $Price: Duration</span>
-
+        <Services />
         <Reservation />
       </div>
     )
