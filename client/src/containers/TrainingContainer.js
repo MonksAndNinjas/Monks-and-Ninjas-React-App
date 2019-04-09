@@ -1,6 +1,6 @@
 import React from 'react';
-import Reservation from '../components/Reservation.js';
-import Services from '../components/Services.js';
+import Reservation from '../components/Training/Reservation.js';
+import Services from '../components/Training/Services.js';
 
 class TrainingContainer extends React.Component {
 
