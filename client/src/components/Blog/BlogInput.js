@@ -3,6 +3,7 @@ import React from 'react';
 class BlogInput extends React.Component {
   state = {
     value: '',
+    date: new Date(),
   }
 
   handleChange = event => {
@@ -12,8 +13,16 @@ class BlogInput extends React.Component {
   }
 
   handleSubmit = event => {
-    event.preventDefault()
-    console.log(this.state.value);
+    event.preventDefault();
+
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    const date = this.state.date;
+    const day = date.getDay();
+    const month = monthNames[date.getMonth()];
+    const year = date.getFullYear();
+    const postDate = month + ' ' + day + ', ' + year
+    console.log(this.state.value + ': ' + postDate);
   }
 
   render() {
