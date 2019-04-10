@@ -22,7 +22,13 @@ class BlogInput extends React.Component {
     const month = monthNames[date.getMonth()];
     const year = date.getFullYear();
     const postDate = month + ' ' + day + ', ' + year
-    console.log(this.state.value + ': ' + postDate);
+
+    const post = {
+      content: this.state.value,
+      postDate: postDate
+    }
+
+    this.props.onSubmit(post);
   }
 
   render() {
