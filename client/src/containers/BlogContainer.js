@@ -4,8 +4,14 @@ import BlogInput from '../components/Blog/BlogInput.js';
 
 class BlogContainer extends React.Component {
 
+  state = {
+    blogPosts: []
+  }
+
   blogPost = ({ content, postDate }) => {
-    console.log(`${content}: ${postDate}`);
+    const post = `${content}: ${postDate}`;
+
+    this.setState({ blogPosts: [...this.state.blogPosts, post] })
   };
 
   render() {
@@ -14,7 +20,7 @@ class BlogContainer extends React.Component {
         <h1>Blog</h1>
 
         <BlogInput onSubmit={this.blogPost} />
-        <Blog />
+        <Blog blogPosts={this.state.blogPosts}/>
 
         <section>Current or selected blog post goes here</section>
       </div>
