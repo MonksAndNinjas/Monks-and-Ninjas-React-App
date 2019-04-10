@@ -11,3 +11,6 @@ What's next?
 7. Add email response for contact and when reservation made
 8. Add availability
 9. Add css
+10. Add Fetch code to retrieve mock data from rails portion
+
+---Maybe add iFrame for location

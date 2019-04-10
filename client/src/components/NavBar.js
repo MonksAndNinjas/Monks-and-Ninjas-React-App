@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'; 
+import { NavLink } from 'react-router-dom';
 
-class Nav extends React.Component {
+class NavBar extends React.Component {
 
   render() {
     return (
@@ -16,4 +16,4 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav;
+export default NavBar;
