@@ -1,17 +1,19 @@
 import React from 'react';
 import Calendar from 'react-calendar';
+import Availability from './availability'
 
 class Reservation extends React.Component {
   state = {
     date: new Date(),
   }
 
-  onChange = date => this.setState({ date })
+  handleChange = date => this.setState({ date })
 
   render() {
     return (
       <div>
-        <Calendar onChange={this.onChange} value={this.state.date} />
+        <Calendar onChange={this.handleChange} value={this.state.date} />
+        <Availability date={this.state.date} />
       </div>
     )
   }

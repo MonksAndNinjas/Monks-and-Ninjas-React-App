@@ -1,16 +1,15 @@
 What's next?
 
-
-
-1. Add form to create Blog
-2. Add mock blog data  --- Rails
-3. Add mock services data  --- Rails
-4. Add listener for making reservation
-5. Add Social Media data
-6. Add background, artwork and logo
-7. Add email response for contact and when reservation made
-8. Add availability
-9. Add css
-10. Add Fetch code to retrieve mock data from rails portion
+=> Add training availability
+=> Add form for reservation
+=> Add list of reservations
+=> Add mock services data --- Rails
+=> Add listener for making reservation
+=> Add Social Media data
+=> Add background, artwork and logo
+=> Add email response for contact and when reservation made
+=> Add availability
+=> Add css
+=> Add Fetch code to retrieve mock data from rails portion
 
 ---Maybe add iFrame for location

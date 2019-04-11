@@ -10,7 +10,7 @@ class Blog extends React.Component {
 
     return (
       <div>
-        <h2>All Blog Posts go here</h2>
+        <h2>Blog Archive</h2>
 
         <ul>{renderPosts}</ul>
       </div>
