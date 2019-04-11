@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+early_morning = Availability.create(time: '9:00AM')
+morning = Availability.create(time: '11:00AM')
+afternoon = Availability.create(time: '1:00PM')
+late_afternoon = Availability.create(time: '3:00PM')

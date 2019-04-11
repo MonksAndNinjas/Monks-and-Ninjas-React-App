@@ -1,3 +1,3 @@
-class Availability < ActiveRecord::Base
-  
+class Availability < ApplicationRecord
+
 end
