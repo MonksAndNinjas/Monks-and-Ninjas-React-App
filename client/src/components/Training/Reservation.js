@@ -1,6 +1,6 @@
 import React from 'react';
 import Calendar from 'react-calendar';
-import Availability from './availability'
+import Availability from './Availability'
 
 class Reservation extends React.Component {
   state = {
@@ -13,7 +13,7 @@ class Reservation extends React.Component {
     return (
       <div>
         <Calendar onChange={this.handleChange} value={this.state.date} />
-        <Availability date={this.state.date} />
+        <Availability date={this.state.date.toString()} />
       </div>
     )
   }
