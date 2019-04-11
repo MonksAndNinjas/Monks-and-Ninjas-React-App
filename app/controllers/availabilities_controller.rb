@@ -1,8 +1,9 @@
-class Availabilities < ApplicationController
+class AvailabilitiesController < ApplicationController
   def index
+    @availabilities = Availability.all
     render(
       status: 200,
-      json: Availability.all
+      json: @availabilities
     )
   end
 end
