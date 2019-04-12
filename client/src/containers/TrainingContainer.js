@@ -16,6 +16,13 @@ class TrainingContainer extends React.Component {
       </div>
     )
   }
+
+  componentDidMount() {
+    fetch('api/availabilities', {
+      accept: 'application/json',
+    }).then(response => response.json())
+      .then(data => console.log(data));
+  }
 }
 
 export default TrainingContainer;
