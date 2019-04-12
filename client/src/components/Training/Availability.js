@@ -8,8 +8,8 @@ class Availability extends React.Component {
 
   render() {
 
-    const renderTimes = this.props.times.map((time, index) => (
-      <li key={index}>{time} <button value={time} onClick={event => this.handleClick(event)}>Reserve Time</button></li>
+    const renderTimes = this.props.availability.map((hash, index) => (
+      <li key={index}>{hash.time} <button value={hash.time} onClick={event => this.handleClick(event)}>Reserve Time</button></li>
     ));
 
     return (
