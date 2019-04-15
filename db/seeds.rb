@@ -16,16 +16,37 @@ late_afternoon = Availability.create(time: '3:00PM')
 
 ####### Training Services ###########
 
-small_group = Services.create(
+small_group = Service.create(
   title: 'Small Group',
   description: 'Private Training for 2 to 5 people',
   duration: '60 minutes',
   cost: 'to be determined'
 )
 
-private = Services.create(
+private = Service.create(
   title: 'Private Training',
-  description: 'Individual Training',
+  description: 'Individual Training for Adults',
   duration: '60 minutes',
+  cost: 'to be determined'
+)
+
+children = Service.create(
+  title: 'Private Training',
+  description: 'Individual Training for kids, duration determined based on age',
+  duration: '45 - 60 Minutes',
+  cost: 'to be determined'
+)
+
+small_group_children = Service.create(
+  title: 'Small Group Children',
+  description: 'Private Training for 2 - 5 children, duration determined based on age',
+  duration: '45 - 60 Minutes',
+  cost: 'to be determined'
+)
+
+large_group_training = Service.create(
+  title: 'Group Training for companies',
+  description: 'Private Training for large groups such as corporations, adults, or children, duration based on age and number of people',
+  duration: '45 - 90 minutes',
   cost: 'to be determined'
 )

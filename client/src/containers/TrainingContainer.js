@@ -7,7 +7,8 @@ import 'isomorphic-fetch';
 class TrainingContainer extends React.Component {
 
   state = {
-    availableTimes: []
+    availableTimes: [],
+    services: []
   }
 
   render() {
@@ -15,7 +16,7 @@ class TrainingContainer extends React.Component {
       <div>
         <h1>Training</h1>
 
-        <Services />
+        <Services services={this.state.services} />
         <Reservation availability={this.state.availableTimes} />
       </div>
     )
@@ -27,6 +28,13 @@ class TrainingContainer extends React.Component {
     }).then(response => response.json())
       .then(data => this.setState({
         availableTimes: data
+      }));
+
+    fetch('api/services', {
+      accept: 'application/json',
+    }).then(response => response.json())
+      .then(data => this.setState({
+        services: data
       }));
   }
 }

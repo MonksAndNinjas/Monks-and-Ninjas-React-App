@@ -1,9 +1,9 @@
 class ServicesController < ApplicationController
   def index
-    @availabilities = Availability.all
+    @services = Service.all
     render(
       status: 200,
-      json: @availabilities
+      json: @services
     )
   end
 end
