@@ -13,7 +13,7 @@ class Reservation extends React.Component {
     return (
       <div>
         <Calendar onChange={this.handleChange} value={this.state.date} />
-        <Availability date={this.state.date.toString()} availability={this.props.availability} />                     />
+        <Availability date={this.state.date.toString()} availability={this.props.availability} />
       </div>
     )
   }

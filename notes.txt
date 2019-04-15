@@ -13,3 +13,13 @@ What's next?
 => Add Fetch code to retrieve mock data from rails portion
 
 ---Maybe add iFrame for location
+
+
+Type of services:
+
+Martial Arts, (Tai Chi, Movement, Muay Thai, Grappling Basics, Flexibility, Meditation)
+
+1. Corporate seminars
+2. Corporate training - ongoing
+3. Individual
+4. Small Group
