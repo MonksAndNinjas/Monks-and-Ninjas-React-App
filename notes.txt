@@ -1,14 +1,10 @@
 What's next?
 
-=> Add training availability
 => Add form for reservation
-=> Add list of reservations
-=> Add mock services data --- Rails
 => Add listener for making reservation
 => Add Social Media data
 => Add background, artwork and logo
 => Add email response for contact and when reservation made
-=> Add availability
 => Add css
 => Add Fetch code to retrieve mock data from rails portion
 
