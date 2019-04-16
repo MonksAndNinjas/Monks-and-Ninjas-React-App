@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import blogReducer from './reducers/blogReducer.js';
 import './index.css';
 
 import Home from './Home';
@@ -15,6 +18,10 @@ import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+const store = createStore(blogReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 const Header = () =>
   <header><NavBar /></header>;
 
@@ -22,17 +29,19 @@ const Footer = () =>
   <footer><SocialMedia /></footer>;
 
 ReactDOM.render((
-  <Router>
-    <React.Fragment>
-      <Header />
-      <Route exact path="/" component={Home} />
-      <Route exact path="/about" component={About} />
-      <Route exact path="/training" component={TrainingContainer} />
-      <Route exact path="/blog" component={BlogContainer} />
-      <Route exact path="/contact" component={Contact} />
-      <Footer />
-    </React.Fragment>
-  </Router>),
+  <Provider store={store}>
+    <Router>
+      <React.Fragment>
+        <Header />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/training" component={TrainingContainer} />
+        <Route exact path="/blog" component={BlogContainer} />
+        <Route exact path="/contact" component={Contact} />
+        <Footer />
+      </React.Fragment>
+    </Router>
+  </Provider>),
   document.getElementById('root')
 );
 
