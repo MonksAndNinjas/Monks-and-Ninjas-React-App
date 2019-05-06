@@ -2,6 +2,7 @@ import React from 'react';
 import Blog from '../components/Blog/Blog.js';
 import BlogInput from '../components/Blog/BlogInput.js';
 import { connect } from 'react-redux';
+import { addBlogPost } from '../actions/posts';
 
 class BlogContainer extends React.Component {
 
@@ -13,7 +14,7 @@ class BlogContainer extends React.Component {
     const post = `${content}: ${postDate}`;
 
     //this.setState({ blogPosts: [...this.state.blogPosts, post] })
-    this.props.
+    this.props.addBlogPost(this.state);
   };
 
   render() {
@@ -30,10 +31,10 @@ class BlogContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+/*const mapStateToProps = state => {
   return({
     blogPosts: state.blogPosts
   })
-}
+}*/
 
-export default connect(mapStateToProps)(BlogContainer);
+export default connect(null, { addBlogPost })(BlogContainer);

@@ -2,14 +2,21 @@ import React from 'react';
 
 class BlogInput extends React.Component {
   state = {
-    value: '',
+    title: '',
+    content: '',
     date: new Date(),
   }
 
-  handleChange = event => {
+  handleTitleChange = event => {
     this.setState({
-      value: event.target.value,
+      title: event.target.value,
     });
+  }
+
+  handleContentChange = event => {
+    this.setState({
+      content: event.target.value,
+    })
   }
 
   handleSubmit = event => {
@@ -24,7 +31,8 @@ class BlogInput extends React.Component {
     const postDate = month + ' ' + day + ', ' + year
 
     const post = {
-      content: this.state.value,
+      title: this.state.title,
+      content: this.state.content,
       postDate: postDate
     }
 
@@ -38,8 +46,12 @@ class BlogInput extends React.Component {
 
         <form onSubmit={event => this.handleSubmit(event)}>
           <label>
-            Blog Content
-            <input type="textarea" value={this.state.value} onChange={this.handleChange} />
+            Title
+            <input type="text" value={this.state.value} onChange={this.handleTitleChange} />
+          </label>
+          <label>
+            Content
+            <input type="textarea" value={this.state.value} onChange={this.handleContentChange} />
           </label>
           <button type="submit">Submit Post</button>
         </form>
