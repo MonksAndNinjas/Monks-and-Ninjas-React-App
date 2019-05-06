@@ -12,7 +12,8 @@ class BlogContainer extends React.Component {
   blogPost = ({ content, postDate }) => {
     const post = `${content}: ${postDate}`;
 
-    this.setState({ blogPosts: [...this.state.blogPosts, post] })
+    //this.setState({ blogPosts: [...this.state.blogPosts, post] })
+    this.props.
   };
 
   render() {
