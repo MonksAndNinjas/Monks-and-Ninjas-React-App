@@ -11,7 +11,7 @@ class Blog extends React.Component {
     return (
       <div>
         <h2>Blog Archive</h2>
-
+// start here does my code present itself on the page and with the react database
         <ul>{renderPosts}</ul>
       </div>
     )

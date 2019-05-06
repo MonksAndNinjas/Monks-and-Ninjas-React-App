@@ -1,5 +1,8 @@
 What's next?
 
+=> Add ability to add, remove, edit blog posts
+=> Add rails/db for blog posts
+=> Move date for blog entry to container, out of components
 => Add form for reservation
 => Add listener for making reservation
 => Add Social Media data
