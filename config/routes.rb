@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :availabilities
     resources :services
+    resources :posts
   end
 end
