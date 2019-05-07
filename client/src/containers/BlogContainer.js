@@ -6,15 +6,8 @@ import { addBlogPost } from '../actions/posts';
 
 class BlogContainer extends React.Component {
 
-  state = {
-    blogPosts: []
-  }
-
-  blogPost = ({ content, postDate }) => {
-    const post = `${content}: ${postDate}`;
-
-    //this.setState({ blogPosts: [...this.state.blogPosts, post] })
-    this.props.addBlogPost(this.state);
+  blogPost = (postHash) => {
+    this.props.addBlogPost(postHash);
   };
 
   render() {
@@ -23,7 +16,7 @@ class BlogContainer extends React.Component {
         <h1>Blog</h1>
 
         <BlogInput onSubmit={this.blogPost} />
-        <Blog blogPosts={this.state.blogPosts}/>
+        <Blog blogPosts={this.props.blogPosts} />
 
         <section>Current or selected blog post goes here</section>
       </div>
@@ -31,10 +24,10 @@ class BlogContainer extends React.Component {
   }
 }
 
-/*const mapStateToProps = state => {
+const mapStateToProps = state => {
   return({
     blogPosts: state.blogPosts
   })
-}*/
+}
 
-export default connect(null, { addBlogPost })(BlogContainer);
+export default connect(mapStateToProps, { addBlogPost })(BlogContainer);

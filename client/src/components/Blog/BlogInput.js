@@ -3,40 +3,36 @@ import React from 'react';
 class BlogInput extends React.Component {
   state = {
     title: '',
-    content: '',
-    date: new Date(),
+    content: ''
   }
 
-  handleTitleChange = event => {
+  handleChange = event => {
     this.setState({
-      title: event.target.value,
-    });
-  }
-
-  handleContentChange = event => {
-    this.setState({
-      content: event.target.value,
+      [event.target.name]: event.target.value
     })
   }
 
   handleSubmit = event => {
     event.preventDefault();
 
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    fetch('api/posts', {
+      accept: 'application/json',
+    }).then(response => response.json())
+
+    /*const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     const date = this.state.date;
     const day = date.getDay();
     const month = monthNames[date.getMonth()];
     const year = date.getFullYear();
-    const postDate = month + ' ' + day + ', ' + year
+    const postDate = month + ' ' + day + ', ' + year*/
 
-    const post = {
-      title: this.state.title,
-      content: this.state.content,
-      postDate: postDate
-    }
-
-    this.props.onSubmit(post);
+    //const post = {
+      //title: this.state.title,
+      //content: this.state.content
+  //  }
+    console.log(this.state);
+    this.props.onSubmit(this.state);
   }
 
   render() {
@@ -47,11 +43,11 @@ class BlogInput extends React.Component {
         <form onSubmit={event => this.handleSubmit(event)}>
           <label>
             Title
-            <input type="text" value={this.state.value} onChange={this.handleTitleChange} />
+            <input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
           </label>
           <label>
             Content
-            <input type="textarea" value={this.state.value} onChange={this.handleContentChange} />
+            <input type="textarea" name="content" value={this.state.content} onChange={this.handleChange} />
           </label>
           <button type="submit">Submit Post</button>
         </form>

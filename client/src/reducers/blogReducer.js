@@ -6,11 +6,11 @@ export default function blogReducer(state = {
     case 'ADD_BLOG_POST':
       return {
         ...state,
-        blogPosts: [...state.blogPosts, action.blogPosts]
+        blogPosts: [...state.blogPosts, action.blogPost]
       }
 
-      default:
-       return state;
-       
+    default:
+      return state;
+
   }
 };
