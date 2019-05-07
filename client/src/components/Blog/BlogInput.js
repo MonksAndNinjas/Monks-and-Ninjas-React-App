@@ -7,6 +7,7 @@ class BlogInput extends React.Component {
   }
 
   handleChange = event => {
+    event.persist()
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -14,10 +15,13 @@ class BlogInput extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
     fetch('api/posts', {
-      accept: 'application/json',
-    }).then(response => response.json())
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state)
+    })
 
     /*const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -31,7 +35,6 @@ class BlogInput extends React.Component {
       //title: this.state.title,
       //content: this.state.content
   //  }
-    console.log(this.state);
     this.props.onSubmit(this.state);
   }
 

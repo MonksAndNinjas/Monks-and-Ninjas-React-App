@@ -22,6 +22,14 @@ class BlogContainer extends React.Component {
       </div>
     )
   }
+
+  componentDidMount() {
+    fetch('api/posts', {
+      accept: 'application/json',
+    }).then(response => response.json())
+      .then(data => data.forEach(post => this.blogPost(post)))
+  }
+
 }
 
 const mapStateToProps = state => {
