@@ -3,7 +3,8 @@ import React from 'react';
 class BlogInput extends React.Component {
   state = {
     title: '',
-    content: ''
+    content: '',
+    post_date: new Date()
   }
 
   handleChange = event => {
@@ -15,6 +16,7 @@ class BlogInput extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log(this.state)
     fetch('api/posts', {
       method: "POST",
       headers: {
@@ -23,18 +25,6 @@ class BlogInput extends React.Component {
       body: JSON.stringify(this.state)
     })
 
-    /*const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-    const date = this.state.date;
-    const day = date.getDay();
-    const month = monthNames[date.getMonth()];
-    const year = date.getFullYear();
-    const postDate = month + ' ' + day + ', ' + year*/
-
-    //const post = {
-      //title: this.state.title,
-      //content: this.state.content
-  //  }
     this.props.onSubmit(this.state);
   }
 

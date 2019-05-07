@@ -7,6 +7,15 @@ import { addBlogPost } from '../actions/posts';
 class BlogContainer extends React.Component {
 
   blogPost = (postHash) => {
+    postHash.post_date = String(postHash.post_date)
+    /*const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    const date = this.state.date;
+    const day = date.getDay();
+    const month = monthNames[date.getMonth()];
+    const year = date.getFullYear();
+    const postDate = month + ' ' + day + ', ' + year*/
+
     this.props.addBlogPost(postHash);
   };
 

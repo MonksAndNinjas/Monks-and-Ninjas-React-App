@@ -10,8 +10,9 @@ class PostsController < ApplicationController
   def create
     title = params["post"]["title"]
     content = params["post"]["content"]
+    post_date = params["post"]["post_date"].to_s
 
-    @post = Post.new(title: title, content: content)
+    @post = Post.new(title: title, content: content, post_date: post_date)
 
     if @post.save
       render json: @post, status: :created
