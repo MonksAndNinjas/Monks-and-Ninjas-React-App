@@ -9,6 +9,9 @@ export default function blogReducer(state = {
         blogPosts: [...state.blogPosts, action.blogPost]
       }
 
+    case 'DELETE_BLOG_POST':
+      console.log(action.blogPost);
+
     default:
       return state;
 

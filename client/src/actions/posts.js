@@ -4,3 +4,10 @@ export const addBlogPost = (blogPost) => {
     blogPost
   };
 };
+
+export const deleteBlogPost =(blogPost) => {
+  return {
+    type: 'DELETE_BLOG_POST',
+    blogPost
+  };
+};
