@@ -5,7 +5,7 @@ class Blog extends React.Component {
   render() {
 
     const renderPosts = this.props.blogPosts.map((post, index) => (
-      <li key={index}>{post.title}: {post.content}: {post.post_date}</li>
+      <ul key={index}>Title: {post.title}<br/>Content: {post.content}<br/>Posted On: {post.post_date}</ul>
     ));
 
     return (
