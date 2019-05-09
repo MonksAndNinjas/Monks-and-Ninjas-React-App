@@ -1,6 +1,8 @@
 import React from 'react';
 import Reservation from '../components/Training/Reservation.js';
 import Services from '../components/Training/Services.js';
+import { connect } from 'react-redux';
+import { addReservation } from '../actions/reservations';
 
 import 'isomorphic-fetch';
 
@@ -10,6 +12,10 @@ class TrainingContainer extends React.Component {
     availableTimes: [],
     services: []
   }
+
+  makeReservation = (resHash) => {
+    this.props.addReservation(resHash);
+  };
 
   render() {
     return (
@@ -39,4 +45,4 @@ class TrainingContainer extends React.Component {
   }
 }
 
-export default TrainingContainer;
+export default connect({ addReservation })(TrainingContainer);
