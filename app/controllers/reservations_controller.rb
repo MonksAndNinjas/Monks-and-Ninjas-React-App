@@ -8,16 +8,17 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    #title = params["post"]["title"]
-    #content = params["post"]["content"]
-    #post_date = params["post"]["post_date"].to_s
+    time = params["time"]
+    date = params["date"]
 
-    #@post = Post.new(title: title, content: content, post_date: post_date)
+    reservations = Reservation.all
 
-    #if @post.save
-      render json: params, status: :created
-    #else
-      #render json: @post.errors, status: :unprocessable_entity
-    #end
+    @reservation = Reservation.new(time: time, date: date)
+
+    if @reservation.save
+      render json: reservations, status: :created
+    else
+      render json: @reservation.errors, status: :unprocessable_entity
+    end
   end
 end

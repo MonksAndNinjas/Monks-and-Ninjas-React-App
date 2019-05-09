@@ -14,8 +14,7 @@ class TrainingContainer extends React.Component {
   }
 
   addReservation = (resHash) => {
-    console.log(resHash.reservation)
-    //this.props.addReservation(resHash);
+    this.props.addReservation(resHash);
   };
 
   render() {
@@ -43,6 +42,11 @@ class TrainingContainer extends React.Component {
       .then(data => this.setState({
         services: data
       }));
+
+    fetch('api/reservations', {
+      accept: 'application/json',
+    }).then(response => response.json())
+      .then(data => console.log(data));
   }
 }
 

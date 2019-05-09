@@ -4,17 +4,18 @@ export default function reservationReducer(state = {
   switch (action.type) {
 
     case 'ADD_RESERVATION':
-      console.log(action);
-
       fetch('api/reservations', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(this.state)
+        body: JSON.stringify(action.reservation)
       })
 
-      this.props.onSubmit(this.state);
+      return {
+        ...state,
+        reservations: [...state.reservations, action.reservation]
+      }
 
     default:
       return state;
