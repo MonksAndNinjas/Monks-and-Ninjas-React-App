@@ -4,7 +4,6 @@ import BlogInput from '../components/Blog/BlogInput.js';
 import { connect } from 'react-redux';
 import { addBlogPost } from '../actions/posts';
 import { deleteBlogPost } from '../actions/posts';
-import { editBlogPost } from '../actions/posts';
 
 class BlogContainer extends React.Component {
 
@@ -13,10 +12,6 @@ class BlogContainer extends React.Component {
 
     this.props.addBlogPost(postHash);
   };
-
-  editBlogPost = (postHash) => {
-    console.log(postHash);
-  }
 
   deleteBlogPost = (postHash) => {
     this.props.deleteBlogPost(postHash);
@@ -28,7 +23,7 @@ class BlogContainer extends React.Component {
         <h1>Blog</h1>
 
         <BlogInput onSubmit={this.addBlogPost} />
-        <Blog blogPosts={this.props.blogPosts} edit={this.editBlogPost} delete={this.deleteBlogPost}  />
+        <Blog blogPosts={this.props.blogPosts} delete={this.deleteBlogPost}  />
 
       </div>
     )
@@ -49,4 +44,4 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, { addBlogPost, editBlogPost, deleteBlogPost })(BlogContainer);
+export default connect(mapStateToProps, { addBlogPost, deleteBlogPost })(BlogContainer);
