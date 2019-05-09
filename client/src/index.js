@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+
+import { combineReducers } from 'redux';
 import blogReducer from './reducers/blogReducer.js';
+import reservationReducer from './reducers/reservationReducer';
+
 import './index.css';
 
 import Home from './Home';
@@ -18,7 +22,12 @@ import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-const store = createStore(blogReducer,
+const rootReducer = combineReducers({
+  blogPosts: blogReducer,
+  reservations: reservationReducer
+})
+
+const store = createStore(rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

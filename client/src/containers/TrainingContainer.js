@@ -45,4 +45,10 @@ class TrainingContainer extends React.Component {
   }
 }
 
-export default connect({ addReservation })(TrainingContainer);
+const mapStateToProps = state => {
+  return({
+    reservations: state.reservations
+  })
+}
+
+export default connect(mapStateToProps, { addReservation })(TrainingContainer);
