@@ -10,7 +10,16 @@ export default function blogReducer(state = {
       }
 
     case 'DELETE_BLOG_POST':
-      console.log(action.blogPost);
+      const posts = state.blogPosts.filter(post => post.id !== action.blogPost.id)
+
+      fetch('api/posts' + '/' + action.blogPost.id, {
+        method: "delete",
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+
+      return { blogPosts: posts }
 
     default:
       return state;
