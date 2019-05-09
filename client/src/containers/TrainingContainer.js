@@ -13,8 +13,9 @@ class TrainingContainer extends React.Component {
     services: []
   }
 
-  makeReservation = (resHash) => {
-    this.props.addReservation(resHash);
+  addReservation = (resHash) => {
+    console.log(resHash.reservation)
+    //this.props.addReservation(resHash);
   };
 
   render() {
@@ -23,7 +24,7 @@ class TrainingContainer extends React.Component {
         <h1>Training</h1>
 
         <Services services={this.state.services} />
-        <Reservation availability={this.state.availableTimes} />
+        <Reservation availability={this.state.availableTimes} addReservation={this.addReservation} />
       </div>
     )
   }

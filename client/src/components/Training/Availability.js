@@ -3,7 +3,14 @@ import React from 'react';
 class Availability extends React.Component {
 
   handleClick = event => {
-    console.log(event.target.value + ': ' + this.props.date);
+    event.preventDefault();
+
+    const resHash = {
+      time: event.target.value,
+      date: this.props.date
+    }
+
+    this.props.addReservation(resHash);
   }
 
   render() {
