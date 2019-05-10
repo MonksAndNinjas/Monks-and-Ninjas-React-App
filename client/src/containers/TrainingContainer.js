@@ -11,11 +11,11 @@ class TrainingContainer extends React.Component {
   state = {
     availableTimes: [],
     services: []
-  }
-
+  };
+// should not be holding validations here, where it is being post requested
   addReservation = (resHash) => {
     this.props.addReservation(resHash);
-  };
+   };
 
   render() {
     return (
@@ -23,7 +23,7 @@ class TrainingContainer extends React.Component {
         <h1>Training</h1>
 
         <Services services={this.state.services} />
-        <Reservation availability={this.state.availableTimes} addReservation={this.addReservation} />
+        <Reservation availability={this.state.availableTimes} addReservation={this.addReservation} check={this.checkAvailability} />
       </div>
     )
   }
@@ -46,13 +46,13 @@ class TrainingContainer extends React.Component {
     fetch('api/reservations', {
       accept: 'application/json',
     }).then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => data.forEach(reservation => this.addReservation(reservation)));
   }
 }
 
 const mapStateToProps = state => {
   return({
-    reservations: state.reservations
+    reservations: state.reservations.reservations
   })
 }
 

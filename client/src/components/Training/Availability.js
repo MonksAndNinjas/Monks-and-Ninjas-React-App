@@ -10,6 +10,15 @@ class Availability extends React.Component {
       date: this.props.date
     }
 
+    fetch('api/reservations', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(resHash)
+    }).then(response => response)
+      .then(data => console.log(data))
+//need to probably setup with a promise
     this.props.addReservation(resHash);
   }
 

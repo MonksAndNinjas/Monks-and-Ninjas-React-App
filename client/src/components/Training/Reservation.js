@@ -28,7 +28,7 @@ class Reservation extends React.Component {
       <div>
         <Calendar onChange={this.handleChange} value={this.state.date} />
         <br/>
-        <Availability date={this.formattedDate(this.state.date)} availability={this.props.availability} addReservation={this.props.addReservation} />
+        <Availability date={this.formattedDate(this.state.date)} availability={this.props.availability} addReservation={this.props.addReservation} check={this.props.check} />
       </div>
     )
   }

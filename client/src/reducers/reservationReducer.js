@@ -2,16 +2,8 @@ export default function reservationReducer(state = {
   reservations: []
 }, action) {
   switch (action.type) {
-
+//move out of here fetch does not belong here
     case 'ADD_RESERVATION':
-      fetch('api/reservations', {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(action.reservation)
-      })
-
       return {
         ...state,
         reservations: [...state.reservations, action.reservation]

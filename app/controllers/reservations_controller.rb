@@ -12,13 +12,19 @@ class ReservationsController < ApplicationController
     date = params["date"]
 
     reservations = Reservation.all
+    duplicate = reservations.where(time: time, date: date)
 
-    @reservation = Reservation.new(time: time, date: date)
-
-    if @reservation.save
-      render json: reservations, status: :created
+    if duplicate
+      render json: "Ooops, not available"
     else
-      render json: @reservation.errors, status: :unprocessable_entity
+      @reservation = Reservation.new(time: time, date: date)
+
+      if @reservation.save
+        render json: @reservation, status: :created
+      else
+        render json: @reservation.errors, status: :unprocessable_entity
+      end
     end
   end
+
 end
