@@ -12,7 +12,7 @@ class TrainingContainer extends React.Component {
     availableTimes: [],
     services: []
   };
-// should not be holding validations here, where it is being post requested
+
   addReservation = (resHash) => {
     this.props.addReservation(resHash);
    };

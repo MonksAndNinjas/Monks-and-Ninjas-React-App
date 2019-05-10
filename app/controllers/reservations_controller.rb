@@ -14,8 +14,8 @@ class ReservationsController < ApplicationController
     reservations = Reservation.all
     duplicate = reservations.where(time: time, date: date)
 
-    if duplicate
-      render json: "Ooops, not available"
+    if duplicate.length > 0
+      render json: [{error: "not available"}]
     else
       @reservation = Reservation.new(time: time, date: date)
 
