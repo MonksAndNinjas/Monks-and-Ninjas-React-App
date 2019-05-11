@@ -3,7 +3,7 @@ import React from 'react';
 class Availability extends React.Component {
 
   didItSave = (data) => {
-    if (data.size > 0) {
+    if (data[0] !==  "not available") {
       this.props.addReservation(data)
     }
   }
@@ -43,7 +43,9 @@ class Availability extends React.Component {
 
   render() {
 
-    const renderTimes = this.props.availability.map((hash, index) => (
+    const date = this.formattedDate(this.props.date)
+
+    const renderTimes = this.props.availability(date).map((hash, index) => (
       <li key={index}>{hash.time} <button value={hash.time} onClick={event => this.handleClick(event)}>Reserve Time</button></li>
     ));
 

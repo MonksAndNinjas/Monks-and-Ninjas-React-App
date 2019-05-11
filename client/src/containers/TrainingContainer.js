@@ -17,13 +17,32 @@ class TrainingContainer extends React.Component {
     this.props.addReservation(resHash);
    };
 
+   filterTime = (date) => {
+     var renderList = this.state.availableTimes;
+     var busyList = this.props.reservations;
+
+     const filterBusyList = busyList.filter((hash) => {
+       return hash.date === date
+     });
+
+     /*const updatedList = render.filter((hash, index) => {
+       for(var t in busyList) {
+         if ()
+       }
+     })*/
+
+     console.log(filterBusyList);
+
+     return renderList
+   }
+
   render() {
     return (
       <div>
         <h1>Training</h1>
 
         <Services services={this.state.services} />
-        <Reservation availability={this.state.availableTimes} addReservation={this.addReservation} check={this.checkAvailability} />
+        <Reservation availability={this.filterTime} addReservation={this.addReservation}  />
       </div>
     )
   }
