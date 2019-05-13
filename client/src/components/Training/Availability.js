@@ -16,7 +16,7 @@ class Availability extends React.Component {
     var number = date.getDate();
     var month = monthNames[date.getMonth()];
     var year = date.getFullYear();
-    var weekday = weekNames[date.getDay()];
+    var weekday = weekNames[day];
 
     var dateString = weekday + " " + month + " " + number + ", " + year;
 

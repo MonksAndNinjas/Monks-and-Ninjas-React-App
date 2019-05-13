@@ -25,15 +25,15 @@ class TrainingContainer extends React.Component {
        return hash.date === date
      });
 
-     /*const updatedList = render.filter((hash, index) => {
-       for(var t in busyList) {
-         if ()
-       }
-     })*/
+     const updatedList = renderList.filter((hash, index) => {
+       const response = filterBusyList.filter((item) => {
+         return item.time === hash.time
+       })
 
-     console.log(filterBusyList);
+       return response.length === 0
+     })
 
-     return renderList
+     return updatedList
    }
 
   render() {
