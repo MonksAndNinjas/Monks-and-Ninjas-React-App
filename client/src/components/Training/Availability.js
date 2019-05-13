@@ -26,7 +26,17 @@ class Availability extends React.Component {
   handleClick = event => {
     event.preventDefault();
 
-    const resHash = {
+// need to connect reservation to client
+// after reseration is selected => call funciton to grab client info
+// until filled out need to keep asking for interval
+    while (this.props.valid === false) {
+      console.log("keep checking")
+      console.log(this.props.valid)
+    }
+
+    console.log("keep checking")
+
+  /*  const resHash = {
       time: event.target.value,
       date: this.formattedDate(this.props.date)
     }
@@ -38,7 +48,7 @@ class Availability extends React.Component {
       },
       body: JSON.stringify(resHash)
     }).then(response => response.json())
-      .then(data => this.didItSave(data))
+      .then(data => this.didItSave(data))*/
   }
 
   render() {
