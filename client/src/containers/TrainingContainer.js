@@ -65,7 +65,13 @@ class TrainingContainer extends React.Component {
     fetch('api/reservations', {
       accept: 'application/json',
     }).then(response => response.json())
-      .then(data => data.forEach(reservation => this.addReservation(reservation)));
+      .then(data => data.forEach(reservation => this.addReservation(reservation)
+    ));
+
+    fetch('api/client_info', {
+      accept: 'application/json',
+    }).then(response => response.json())
+      .then(data => console.log(data));
   }
 }
 
