@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_161922) do
+ActiveRecord::Schema.define(version: 2019_05_13_160125) do
 
   create_table "availabilities", force: :cascade do |t|
     t.string "time"
+  end
+
+  create_table "client_infos", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "email"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -25,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_05_09_161922) do
   create_table "reservations", force: :cascade do |t|
     t.string "time"
     t.string "date"
+    t.integer "client_info_id"
   end
 
   create_table "services", force: :cascade do |t|
