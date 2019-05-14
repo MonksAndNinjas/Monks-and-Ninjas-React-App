@@ -16,7 +16,8 @@ class TrainingContainer extends React.Component {
     email: '',
     availableTimes: [],
     services: [],
-    isHidden: false,
+    reservation: '',
+    isHidden: true,
     date: new Date(),
   };
 
@@ -45,12 +46,6 @@ class TrainingContainer extends React.Component {
     this.setState({ date })
   }
 
-  toggleHidden = () => {
-    this.setState({
-      isHidden: !this.state.isHidden
-    })
-  }
-
   handleClientChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -58,18 +53,33 @@ class TrainingContainer extends React.Component {
   }
 
   handleClientSubmit = event => {
-    this.toggleHidden();
-  }
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
 
-  handleReservation = resHash => {
-    fetch('api/reservations', {
+    const clientHash = {
+      name: this.state.name,
+      phoneNumber: this.state.phoneNumber,
+      email: this.state.email,
+      reservation: this.state.reservation
+    }
+    console.log(clientHash)
+
+    fetch('api/client_infos', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(resHash)
+      body: JSON.stringify(clientHash)
     }).then(response => response.json())
-      .then(data => this.didItSave(data))
+      .then(data => console.log(data))
+  }
+
+  handleReservation = resHash => {
+      this.setState({
+        reservation: resHash,
+        isHidden: !this.state.isHidden
+      })
   }
 
   addReservation = (resHash) => {
@@ -102,8 +112,8 @@ class TrainingContainer extends React.Component {
 
         <Services services={this.state.services} />
         <Reservation date={this.state.date} dateChange={this.dateChange} />
-        <Availability date={this.formattedDate(this.state.date)} filter={this.filterTime} addReservation={this.addReservation} handleReservation={this.handleReservation} />
-        <Client handleClientChange={this.handleClientChange} handleClientSubmit={this.handleClientSubmit} name={this.state.name} phoneNumber={this.state.phoneNumber} email={this.state.email} />
+        { this.state.isHidden ? <Availability date={this.formattedDate(this.state.date)} filter={this.filterTime} addReservation={this.addReservation} handleReservation={this.handleReservation} /> : null }
+        { this.state.isHidden ? null : <Client handleClientChange={this.handleClientChange} handleClientSubmit={this.handleClientSubmit} name={this.state.name} phoneNumber={this.state.phoneNumber} email={this.state.email} /> }
       </div>
     )
   }

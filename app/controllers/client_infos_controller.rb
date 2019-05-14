@@ -8,12 +8,30 @@ class ClientInfosController < ApplicationController
   end
 
   def create
-#if @reservation.save
-        render json: params, status: :created
-  #    else
-  #      render json: @reservation.errors, status: :unprocessable_entity
-  #    end
-  #  end
+    name = params[:name]
+    phoneNumber = params[:phoneNumber]
+    email = params[:email]
+    time = params[:reservation][:time]
+    date = params[:reservation][:date]
+
+    client = ClientInfo.find_or_create_by(email: email)
+    client.name = name
+    client.phone = phoneNumber
+
+    reservations = Reservation.all
+    duplicate = reservations.where(time: time, date: date)
+
+    if duplicate.length > 0
+      render json: ["not available"]
+    else
+      @reservation = client.reservations.build(time: time, date: date)
+
+      if @reservation.save
+        render json: { reservation: @reservation, client: client } , status: :created
+      else
+        render json: @reservation.errors, status: :unprocessable_entity
+      end
+    end
   end
 
 end
