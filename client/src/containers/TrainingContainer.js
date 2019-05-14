@@ -2,6 +2,7 @@ import React from 'react';
 import Reservation from '../components/Training/Reservation.js';
 import Services from '../components/Training/Services.js';
 import Availability from '../components/Training/Availability.js';
+import Client from '../components/Training/Client.js';
 import { connect } from 'react-redux';
 import { addReservation } from '../actions/reservations';
 
@@ -51,14 +52,12 @@ class TrainingContainer extends React.Component {
   }
 
   handleClientChange = event => {
-    event.persist()
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleClientSubmit = event => {
     this.toggleHidden();
   }
 
@@ -104,21 +103,7 @@ class TrainingContainer extends React.Component {
         <Services services={this.state.services} />
         <Reservation date={this.state.date} dateChange={this.dateChange} />
         <Availability date={this.formattedDate(this.state.date)} filter={this.filterTime} addReservation={this.addReservation} handleReservation={this.handleReservation} />
-        <form onSubmit={event => this.handleSubmit(event)}>
-          <label>
-            Name
-            <input type="text" name="name" value={this.state.name} onChange={this.handleClientChange} />
-          </label>
-          <label>
-            Phone Number
-            <input type="text" name="phoneNumber" value={this.state.phoneNumber} onChange={this.handleClientChange} />
-          </label>
-          <label>
-            Email
-            <input type="text" name="email" value={this.state.email} onChange={this.handleClientChange} />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
+        <Client handleClientChange={this.handleClientChange} handleClientSubmit={this.handleClientSubmit} name={this.state.name} phoneNumber={this.state.phoneNumber} email={this.state.email} />
       </div>
     )
   }
