@@ -1,8 +1,8 @@
 import React from 'react';
-import Reservation from '../components/Training/Reservation.js';
 import Services from '../components/Training/Services.js';
 import Availability from '../components/Training/Availability.js';
 import Client from '../components/Training/Client.js';
+import Calendar from 'react-calendar';
 import { connect } from 'react-redux';
 import { addReservation } from '../actions/reservations';
 
@@ -11,9 +11,11 @@ import 'isomorphic-fetch';
 class TrainingContainer extends React.Component {
 
   state = {
-    name: '',
-    phoneNumber: '',
-    email: '',
+    client: {
+      name: '',
+      phoneNumber: '',
+      email: ''
+    },
     availableTimes: [],
     services: [],
     reservation: '',
@@ -23,7 +25,7 @@ class TrainingContainer extends React.Component {
 
   didItSave = (data) => {
     if (data[0] !==  "not available") {
-      this.addReservation(data)
+      this.addReservation(data.reservation)
     }
   }
 
@@ -48,7 +50,10 @@ class TrainingContainer extends React.Component {
 
   handleClientChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      client: {
+        ...this.state.client,
+        [event.target.name]: event.target.value
+      }
     })
   }
 
@@ -57,22 +62,16 @@ class TrainingContainer extends React.Component {
       isHidden: !this.state.isHidden
     })
 
-    const clientHash = {
-      name: this.state.name,
-      phoneNumber: this.state.phoneNumber,
-      email: this.state.email,
-      reservation: this.state.reservation
-    }
-    console.log(clientHash)
+    const clientReservation = { client: this.state.client, reservation: this.state.reservation }
 
     fetch('api/client_infos', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(clientHash)
+      body: JSON.stringify(clientReservation)
     }).then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => this.didItSave(data))
   }
 
   handleReservation = resHash => {
@@ -111,7 +110,7 @@ class TrainingContainer extends React.Component {
         <h1>Training</h1>
 
         <Services services={this.state.services} />
-        <Reservation date={this.state.date} dateChange={this.dateChange} />
+        <Calendar onChange={this.dateChange} value={this.state.date} />
         { this.state.isHidden ? <Availability date={this.formattedDate(this.state.date)} filter={this.filterTime} addReservation={this.addReservation} handleReservation={this.handleReservation} /> : null }
         { this.state.isHidden ? null : <Client handleClientChange={this.handleClientChange} handleClientSubmit={this.handleClientSubmit} name={this.state.name} phoneNumber={this.state.phoneNumber} email={this.state.email} /> }
       </div>

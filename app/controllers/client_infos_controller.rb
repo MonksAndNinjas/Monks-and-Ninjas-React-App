@@ -8,15 +8,16 @@ class ClientInfosController < ApplicationController
   end
 
   def create
-    name = params[:name]
-    phoneNumber = params[:phoneNumber]
-    email = params[:email]
+    name = params[:client][:name]
+    phoneNumber = params[:client][:phoneNumber]
+    email = params[:client][:email]
     time = params[:reservation][:time]
     date = params[:reservation][:date]
 
     client = ClientInfo.find_or_create_by(email: email)
     client.name = name
     client.phone = phoneNumber
+    client.save
 
     reservations = Reservation.all
     duplicate = reservations.where(time: time, date: date)
