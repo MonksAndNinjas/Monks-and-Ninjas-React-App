@@ -14,6 +14,12 @@ What's next?
 ---Maybe add iFrame for location
 
 
+  <Reservation availability={this.filterTime} isHidden={this.state.isHidden} addReservation={this.addReservation}  />
+<Availability date={this.state.date} availability={this.props.availability} addReservation={this.props.addReservation} />
+
+
+<span>{this.formattedDate(this.props.date)}</span>  => availability and also {renderTimes}
+
 Type of services:
 
 Martial Arts, (Tai Chi, Movement, Muay Thai, Grappling Basics, Flexibility, Meditation)

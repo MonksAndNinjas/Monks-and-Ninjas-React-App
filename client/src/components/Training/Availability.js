@@ -2,66 +2,26 @@ import React from 'react';
 
 class Availability extends React.Component {
 
-  didItSave = (data) => {
-    if (data[0] !==  "not available") {
-      this.props.addReservation(data)
-    }
-  }
-
-  formattedDate = (date) => {
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const weekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-
-    var day = date.getDay();
-    var number = date.getDate();
-    var month = monthNames[date.getMonth()];
-    var year = date.getFullYear();
-    var weekday = weekNames[day];
-
-    var dateString = weekday + " " + month + " " + number + ", " + year;
-
-    return dateString
-  }
-
   handleClick = event => {
     event.preventDefault();
 
-// need to connect reservation to client
-// after reseration is selected => call funciton to grab client info
-// until filled out need to keep asking for interval
-    while (this.props.valid === false) {
-      console.log("keep checking")
-      console.log(this.props.valid)
-    }
-
-    console.log("keep checking")
-
-  /*  const resHash = {
+    const resHash = {
       time: event.target.value,
-      date: this.formattedDate(this.props.date)
+      date: this.props.date
     }
 
-    fetch('api/reservations', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(resHash)
-    }).then(response => response.json())
-      .then(data => this.didItSave(data))*/
+    this.props.handleReservation(resHash);
   }
 
   render() {
 
-    const date = this.formattedDate(this.props.date)
-
-    const renderTimes = this.props.availability(date).map((hash, index) => (
+    const renderTimes = this.props.filter(this.props.date).map((hash, index) => (
       <li key={index}>{hash.time} <button value={hash.time} onClick={event => this.handleClick(event)}>Reserve Time</button></li>
     ));
 
     return (
       <div>
-        <span>{this.formattedDate(this.props.date)}</span>
+        <span>{this.props.date}</span>
 
         <ul>{renderTimes}</ul>
       </div>

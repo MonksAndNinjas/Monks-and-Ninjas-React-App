@@ -1,6 +1,7 @@
 import React from 'react';
 import Reservation from '../components/Training/Reservation.js';
 import Services from '../components/Training/Services.js';
+import Availability from '../components/Training/Availability.js';
 import { connect } from 'react-redux';
 import { addReservation } from '../actions/reservations';
 
@@ -9,9 +10,68 @@ import 'isomorphic-fetch';
 class TrainingContainer extends React.Component {
 
   state = {
+    name: '',
+    phoneNumber: '',
+    email: '',
     availableTimes: [],
-    services: []
+    services: [],
+    isHidden: false,
+    date: new Date(),
   };
+
+  didItSave = (data) => {
+    if (data[0] !==  "not available") {
+      this.addReservation(data)
+    }
+  }
+
+  formattedDate = (date) => {
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const weekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+    var day = date.getDay();
+    var number = date.getDate();
+    var month = monthNames[date.getMonth()];
+    var year = date.getFullYear();
+    var weekday = weekNames[day];
+
+    var dateString = weekday + " " + month + " " + number + ", " + year;
+
+    return dateString
+  }
+
+  dateChange = date => {
+    this.setState({ date })
+  }
+
+  toggleHidden = () => {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
+
+  handleClientChange = event => {
+    event.persist()
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.toggleHidden();
+  }
+
+  handleReservation = resHash => {
+    fetch('api/reservations', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(resHash)
+    }).then(response => response.json())
+      .then(data => this.didItSave(data))
+  }
 
   addReservation = (resHash) => {
     this.props.addReservation(resHash);
@@ -42,7 +102,23 @@ class TrainingContainer extends React.Component {
         <h1>Training</h1>
 
         <Services services={this.state.services} />
-        <Reservation availability={this.filterTime} addReservation={this.addReservation}  />
+        <Reservation date={this.state.date} dateChange={this.dateChange} />
+        <Availability date={this.formattedDate(this.state.date)} filter={this.filterTime} addReservation={this.addReservation} handleReservation={this.handleReservation} />
+        <form onSubmit={event => this.handleSubmit(event)}>
+          <label>
+            Name
+            <input type="text" name="name" value={this.state.name} onChange={this.handleClientChange} />
+          </label>
+          <label>
+            Phone Number
+            <input type="text" name="phoneNumber" value={this.state.phoneNumber} onChange={this.handleClientChange} />
+          </label>
+          <label>
+            Email
+            <input type="text" name="email" value={this.state.email} onChange={this.handleClientChange} />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
       </div>
     )
   }
