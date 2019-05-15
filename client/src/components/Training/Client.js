@@ -4,11 +4,13 @@ class Client extends React.Component {
 
   handleClientChange = event => {
     event.persist();
+    
     this.props.handleClientChange(event)
   }
 
   handleClientSubmit = event => {
     event.preventDefault();
+
     this.props.handleClientSubmit(event);
   }
 

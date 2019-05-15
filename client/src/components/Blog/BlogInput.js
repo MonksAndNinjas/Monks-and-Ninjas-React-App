@@ -1,35 +1,38 @@
 import React from 'react';
 
-function formattedDate () {
-  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-  var date = new Date();
-  var day = date.getDay();
-  var month = monthNames[date.getMonth()];
-  var year = date.getFullYear();
-
-  var dateString = month + " " + day + ", " + year;
-
-  return dateString
-}
-
 class BlogInput extends React.Component {
   state = {
     title: '',
     content: '',
-    post_date: formattedDate()
+    post_date: ''
+  }
+// used for displaying simplified date of post
+  formattedDate = (date) => {
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const weekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+    var day = date.getDay();
+    var number = date.getDate();
+    var month = monthNames[date.getMonth()];
+    var year = date.getFullYear();
+    var weekday = weekNames[day];
+
+    var dateString = weekday + " " + month + " " + number + ", " + year;
+
+    return dateString
   }
 
   handleChange = event => {
     event.persist()
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
+      post_date: this.formattedDate(new Date())
     })
   }
-
+// makes post request to Rails api
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state)
+    
     fetch('api/posts', {
       method: "POST",
       headers: {

@@ -5,12 +5,7 @@ class Availability extends React.Component {
   handleClick = event => {
     event.preventDefault();
 
-    const resHash = {
-      time: event.target.value,
-      date: this.props.date
-    }
-
-    this.props.handleReservation(resHash);
+    this.props.handleReservationSubmit(event);
   }
 
   render() {

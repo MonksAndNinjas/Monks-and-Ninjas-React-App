@@ -1,12 +1,13 @@
 import React from 'react';
 import Blog from '../components/Blog/Blog.js';
 import BlogInput from '../components/Blog/BlogInput.js';
+
 import { connect } from 'react-redux';
 import { addBlogPost } from '../actions/posts';
 import { deleteBlogPost } from '../actions/posts';
 
 class BlogContainer extends React.Component {
-
+// posts can only be added or deleted by administrator
   addBlogPost = (postHash) => {
     postHash.post_date = String(postHash.post_date)
 
@@ -24,18 +25,17 @@ class BlogContainer extends React.Component {
 
         <BlogInput onSubmit={this.addBlogPost} />
         <Blog blogPosts={this.props.blogPosts} delete={this.deleteBlogPost}  />
-
       </div>
     )
   }
-
+// fetch posts from Rails api
+// look into promises and loading animation when fetch is complete
   componentDidMount() {
     fetch('api/posts', {
       accept: 'application/json',
     }).then(response => response.json())
       .then(data => data.forEach(post => this.addBlogPost(post)))
   }
-
 }
 
 const mapStateToProps = state => {

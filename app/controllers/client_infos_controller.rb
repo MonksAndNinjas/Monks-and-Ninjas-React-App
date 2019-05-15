@@ -8,27 +8,27 @@ class ClientInfosController < ApplicationController
   end
 
   def create
-    name = params[:client][:name]
-    phoneNumber = params[:client][:phoneNumber]
-    email = params[:client][:email]
+    name = params[:name]
+    phoneNumber = params[:phoneNumber]
+    email = params[:email]
     time = params[:reservation][:time]
     date = params[:reservation][:date]
-
+# searches by unique email
     client = ClientInfo.find_or_create_by(email: email)
     client.name = name
     client.phone = phoneNumber
     client.save
-
+# checks for duplicate reservations even though list is filtered in TrainingContainer
     reservations = Reservation.all
     duplicate = reservations.where(time: time, date: date)
-
+# is there a duplicate
     if duplicate.length > 0
       render json: ["not available"]
     else
       @reservation = client.reservations.build(time: time, date: date)
 
       if @reservation.save
-        render json: { reservation: @reservation, client: client } , status: :created
+        render json: { reservation: @reservation, client: client }, status: :created
       else
         render json: @reservation.errors, status: :unprocessable_entity
       end
