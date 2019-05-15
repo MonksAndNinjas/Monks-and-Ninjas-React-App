@@ -24,6 +24,7 @@ class TrainingContainer extends React.Component {
     availableTimes: [],     // hours of operation pulled from rails api
     services: [],           // list of services pulled form rails api
     isHidden: true,         // used for switching between client and reservation input
+    loading: true,          // used for switching loading animation on/off
     date: new Date(),
   };
 // move to higher up the tree to use with blog and vise-versa
@@ -115,7 +116,7 @@ class TrainingContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='loading'>
         <h1>Training</h1>
 
         <Services services={this.state.services} />
@@ -128,6 +129,9 @@ class TrainingContainer extends React.Component {
 // fetch calls from Rails api
 // look into promises and loading animation when fetch is complete
   componentDidMount() {
+    this.setState({ loading: !this.state.loading})
+    console.log(this.state);
+
     fetch('api/availabilities', {
       accept: 'application/json',
     }).then(response => response.json())
@@ -152,6 +156,9 @@ class TrainingContainer extends React.Component {
       accept: 'application/json',
     }).then(response => response.json())
       .then(data => console.log(data));
+
+    this.setState({ loading: !this.state.loading })
+    console.log(this.state);
   }
 }
 // fix this weird wording for double reservations
