@@ -1,5 +1,6 @@
 import React from 'react';
 import Login from '../components/Admin/Login.js';
+import AdminPage from '../components/Admin/AdminPage.js';
 
 class AdminContainer extends React.Component {
 
@@ -10,7 +11,7 @@ class AdminContainer extends React.Component {
   render() {
     return (
       <div>
-      { this.state.isLoggedIn ? null : <Login /> }
+      { this.state.isLoggedIn ? <AdminPage /> : <Login /> }
       </div>
     )
   }
