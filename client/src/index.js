@@ -15,6 +15,7 @@ import About from './About';
 import TrainingContainer from './containers/TrainingContainer';
 import BlogContainer from './containers/BlogContainer';
 import Contact from './Contact';
+import AdminContainer from './containers/AdminContainer';
 
 import SocialMedia from './components/SocialMedia';
 import NavBar from './components/NavBar';
