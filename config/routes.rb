@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resources :posts
     resources :reservations
     resources :client_infos
+    resources :users
   end
 end
