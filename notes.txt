@@ -10,6 +10,9 @@ What's next?
 => Add email response for contact and when reservation made
 => Add css
 => Add Fetch code to retrieve mock data from rails portion
+=> stop duplication of store objects when refreshing page
+=> find purpose for store
+=> admin page for blogs and reservations
 
 ---Maybe add iFrame for location
 

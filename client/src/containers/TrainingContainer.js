@@ -115,23 +115,29 @@ class TrainingContainer extends React.Component {
   }
 
   render() {
+    let loading  = this.state.loading
     return (
-      <div className='loading'>
-        <h1>Training</h1>
+      <div>
+        {loading ? (
+          <div>
+            <h1>Loading...</h1>
+          </div>
+        ) : (
+          <div>
+            <h1>Training</h1>
 
-        <Services services={this.state.services} />
-        <Calendar onChange={this.handleDateChange} value={this.state.date} />
-        { this.state.isHidden ? <Availability date={this.formattedDate(this.state.date)} filter={this.filterTime} addReservation={this.addReservation} handleReservationSubmit={this.handleReservationSubmit} /> : null }
-        { this.state.isHidden ? null : <Client handleClientChange={this.handleClientChange} handleClientSubmit={this.handleClientSubmit} name={this.state.name} phoneNumber={this.state.phoneNumber} email={this.state.email} /> }
+            <Services services={this.state.services} />
+            <Calendar onChange={this.handleDateChange} value={this.state.date} />
+            { this.state.isHidden ? <Availability date={this.formattedDate(this.state.date)} filter={this.filterTime} addReservation={this.addReservation} handleReservationSubmit={this.handleReservationSubmit} /> : null }
+            { this.state.isHidden ? null : <Client handleClientChange={this.handleClientChange} handleClientSubmit={this.handleClientSubmit} name={this.state.name} phoneNumber={this.state.phoneNumber} email={this.state.email} /> }
+          </div>
+        )}
       </div>
     )
   }
 // fetch calls from Rails api
 // look into promises and loading animation when fetch is complete
   componentDidMount() {
-    this.setState({ loading: !this.state.loading})
-    console.log(this.state);
-
     fetch('api/availabilities', {
       accept: 'application/json',
     }).then(response => response.json())
@@ -143,6 +149,7 @@ class TrainingContainer extends React.Component {
       accept: 'application/json',
     }).then(response => response.json())
       .then(data => this.setState({
+        loading: false,     // is this the best place to turn loader off?
         services: data
       }));
 
@@ -156,9 +163,6 @@ class TrainingContainer extends React.Component {
       accept: 'application/json',
     }).then(response => response.json())
       .then(data => console.log(data));
-
-    this.setState({ loading: !this.state.loading })
-    console.log(this.state);
   }
 }
 // fix this weird wording for double reservations

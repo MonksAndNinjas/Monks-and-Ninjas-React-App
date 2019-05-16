@@ -48,6 +48,7 @@ ReactDOM.render((
         <Route exact path="/training" component={TrainingContainer} />
         <Route exact path="/blog" component={BlogContainer} />
         <Route exact path="/contact" component={Contact} />
+        <Route exact path="/admin" component={AdminContainer} />
         <Footer />
       </React.Fragment>
     </Router>
