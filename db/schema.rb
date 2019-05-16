@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_13_160125) do
+ActiveRecord::Schema.define(version: 2019_05_16_162318) do
 
   create_table "availabilities", force: :cascade do |t|
     t.string "time"
@@ -39,6 +39,11 @@ ActiveRecord::Schema.define(version: 2019_05_13_160125) do
     t.string "description"
     t.string "duration"
     t.string "cost"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
   end
 
 end

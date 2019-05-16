@@ -16,15 +16,16 @@ class Login extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log(this.state)
 
-    console.log(event.target.username, event.target.password, event.target.value)
-    /*fetch('api/posts', {
+    fetch('api/users', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state)
-    })*/
+    }).then(response => response.json())
+      .then(data => console.log(data))
   }
 
   render() {

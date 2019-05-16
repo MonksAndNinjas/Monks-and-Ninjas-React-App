@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+######## Adminstrative Users ##########
+
+joseph = User.create(username: 'joseph', password: 'bear')
+
 ######## Available Training Times ###########
 
 early_morning = Availability.create(time: '9:00AM')
