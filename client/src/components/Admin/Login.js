@@ -7,6 +7,12 @@ class Login extends React.Component {
     password: ''
   }
 
+  validLogIn = data => {
+    if (!data.error) {
+      this.props.display()
+    }
+  }
+
   handleChange = event => {
     event.persist()
     this.setState({
@@ -25,7 +31,7 @@ class Login extends React.Component {
       },
       body: JSON.stringify(this.state)
     }).then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => this.validLogIn(data))
   }
 
   render() {

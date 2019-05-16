@@ -8,10 +8,18 @@ class AdminContainer extends React.Component {
     isLoggedIn: false
   }
 
+  display = () => {
+    this.setState({
+      isLoggedIn: true
+    })
+  }
+
+  logout = ()
+
   render() {
     return (
       <div>
-      { this.state.isLoggedIn ? <AdminPage /> : <Login /> }
+      { this.state.isLoggedIn ? <AdminPage /> : <Login display={this.display} /> }
       </div>
     )
   }
