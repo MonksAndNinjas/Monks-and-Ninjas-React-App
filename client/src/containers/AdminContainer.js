@@ -14,12 +14,16 @@ class AdminContainer extends React.Component {
     })
   }
 
-  logout = ()
+  logout = () => {
+    this.setState({
+      isLoggedIn: false
+    })
+  }
 
   render() {
     return (
       <div>
-      { this.state.isLoggedIn ? <AdminPage /> : <Login display={this.display} /> }
+      { this.state.isLoggedIn ? <AdminPage logout={this.logout} /> : <Login display={this.display} /> }
       </div>
     )
   }
