@@ -57,6 +57,11 @@ class AdminContainer extends React.Component {
       accept: 'application/json',
     }).then(response => response.json())
       .then(data => this.setState({ clients: data} ));
+
+    fetch('api/users', {
+      accept: 'application/json',
+    }).then(response => response.json())
+      .then(data => console.log(data))
   }
 }
 
