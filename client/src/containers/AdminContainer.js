@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from '../components/Admin/Login.js';
 import AdminPage from '../components/Admin/AdminPage.js';
+import Reservation from '../components/Admin/Reservation.js';
 
 import { connect } from 'react-redux';
 import { addBlogPost } from '../actions/posts.js';
