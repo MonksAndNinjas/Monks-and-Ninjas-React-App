@@ -1,28 +1,43 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { connect } from 'react-redux';
+import { addBlogPost } from '../actions/posts.js';
+import { addReservation } from '../actions/reservations';
 
 class App extends Component {
+
+  addBlogPost = (postHash) => {
+    this.props.addBlogPost(postHash);
+  };
+
+  addReservation = (resHash) => {
+    this.props.addReservation(resHash);
+  };
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
       </div>
     );
   }
+
+  componentDidMount() {
+    fetch('api/posts', {
+      accept: 'application/json',
+    }).then(response => response.json())
+      .then(data => data.forEach(post => this.addBlogPost(post)))
+
+    fetch('api/reservations', {
+      accept: 'application/json',
+    }).then(response => response.json())
+      .then(data => data.forEach(reservation => this.addReservation(reservation)));
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return({
+    blogPosts: state.blogPosts.blogPosts
+  })
+}
+
+export default connect(mapStateToProps, { addBlogPost, addReservation })(App);

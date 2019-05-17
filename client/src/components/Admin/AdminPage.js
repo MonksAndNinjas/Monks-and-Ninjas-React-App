@@ -1,4 +1,6 @@
 import React from 'react';
+import BlogInput from '../Blog/BlogInput.js';
+import Blog from '../Blog/Blog.js';
 
 class AdminPage extends React.Component {
 
@@ -11,11 +13,15 @@ class AdminPage extends React.Component {
     event.preventDefault();
     const path = event.target.name
 
-
     if (path === 'blog') {
-      this.setState({ displayBlog: true })
+      this.setState({
+        displayBlog: true,
+        displayReservations: false
+      })
     } else if (path === 'reservations') {
-      this.setState({ displayReservations: true })
+      this.setState({
+        displayBlog: false,
+        displayReservations: true })
     } else {
       this.props.logout()
     }
@@ -26,8 +32,16 @@ class AdminPage extends React.Component {
       <div>
         <h1>Admin page</h1>
 
-        <button name='blog' onClick={event => this.handleClick(event)}>Blog</button>
-        <button name='reservations' onClick={event => this.handleClick(event)}>Reservations</button>
+        { this.state.displayBlog ? (
+          <div>
+            <BlogInput onSubmit={this.props.addBlogPost} />
+            <Blog blogPosts={this.props.blogPosts} delete={this.props.delete} enableDelete={false}/>
+          </div>
+          ) : <button name='blog' onClick={event => this.handleClick(event)}>Blog</button>}
+        { this.state.displayReservations ? (
+          <div>
+          </div>
+        ) : <button name='reservations' onClick={event => this.handleClick(event)}>Reservations</button>}
 
         <button onClick={event => this.handleClick(event)}>Log Out</button>
       </div>

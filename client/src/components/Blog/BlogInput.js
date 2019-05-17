@@ -32,7 +32,7 @@ class BlogInput extends React.Component {
 // makes post request to Rails api
   handleSubmit = event => {
     event.preventDefault();
-    
+
     fetch('api/posts', {
       method: "POST",
       headers: {
