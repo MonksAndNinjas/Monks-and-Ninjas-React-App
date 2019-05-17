@@ -33,10 +33,16 @@ class AdminContainer extends React.Component {
     this.props.deleteBlogPost(postHash);
   };
 
+  findClient = (clientId) => {
+    const client = this.state.clients.find( client => client.id === clientId)
+    const renderClient = 'Name: ' + client.name + ' Phone: ' + client.phone + ' Email: ' + client.email
+    return renderClient;
+  }
+
   render() {
     return (
       <div>
-      { this.state.isLoggedIn ? <AdminPage reservations={this.props.reservations} blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost}/> : <Login display={this.display} /> }
+      { this.state.isLoggedIn ? <AdminPage reservations={this.props.reservations} blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost} findClient={this.findClient} /> : <Login display={this.display} /> }
       </div>
     )
   }
