@@ -5,6 +5,7 @@ import AdminPage from '../components/Admin/AdminPage.js';
 import { connect } from 'react-redux';
 import { addBlogPost } from '../actions/posts.js';
 import { deleteBlogPost } from '../actions/posts.js';
+import { deleteReservation } from '../actions/reservations.js';
 
 class AdminContainer extends React.Component {
 
@@ -33,6 +34,10 @@ class AdminContainer extends React.Component {
     this.props.deleteBlogPost(postHash);
   };
 
+  deleteReservation = (reservationHash) => {
+    this.props.deleteReservation(reservationHash);
+  }
+
   findClient = (clientId) => {
     const client = this.state.clients.find( client => client.id === clientId)
     const renderClient = 'Name: ' + client.name + ' Phone: ' + client.phone + ' Email: ' + client.email
@@ -42,7 +47,7 @@ class AdminContainer extends React.Component {
   render() {
     return (
       <div>
-      { this.state.isLoggedIn ? <AdminPage reservations={this.props.reservations} blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost} findClient={this.findClient} /> : <Login display={this.display} /> }
+      { this.state.isLoggedIn ? <AdminPage reservations={this.props.reservations} blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost} findClient={this.findClient} deleteReservation={this.deleteReservation} /> : <Login display={this.display} /> }
       </div>
     )
   }
@@ -62,4 +67,4 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, { addBlogPost, deleteBlogPost })(AdminContainer)
+export default connect(mapStateToProps, { addBlogPost, deleteBlogPost, deleteReservation })(AdminContainer)

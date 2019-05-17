@@ -7,24 +7,11 @@ class ReservationsController < ApplicationController
     )
   end
 
-  #def create
-  #  time = params["time"]
-  #  date = params["date"]
+  def destroy
+    reservation = Reservation.find(params[:id])
+    reservation.destroy
 
-  #  reservations = Reservation.all
-  #  duplicate = reservations.where(time: time, date: date)
-
-  #  if duplicate.length > 0
-  #    render json: ["not available"]
-  #  else
-  #    @reservation = Reservation.new(time: time, date: date)
-
-  #    if @reservation.save
-  #      render json: @reservation, status: :created
-  #    else
-  #      render json: @reservation.errors, status: :unprocessable_entity
-  #    end
-  #  end
-  #end
+    render json: "Reservation successfully deleted"
+  end
 
 end

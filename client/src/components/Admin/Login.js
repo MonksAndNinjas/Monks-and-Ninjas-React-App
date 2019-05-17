@@ -22,7 +22,6 @@ class Login extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state)
 
     fetch('api/users', {
       method: "POST",

@@ -4,3 +4,10 @@ export const addReservation = (reservation) => {
     reservation
   };
 };
+
+export const deleteReservation = (reservation) => {
+  return {
+    type: 'DELETE_RESERVATION',
+    reservation
+  };
+};

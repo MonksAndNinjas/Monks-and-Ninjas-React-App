@@ -41,7 +41,7 @@ class AdminPage extends React.Component {
           ) : <button name='blog' onClick={event => this.handleClick(event)}>Blog</button>}
         { this.state.displayReservations ? (
           <div>
-            <Reservation reservations={this.props.reservations} findClient={this.props.findClient} />
+            <Reservation reservations={this.props.reservations} findClient={this.props.findClient} delete={this.props.deleteReservation} />
           </div>
         ) : <button name='reservations' onClick={event => this.handleClick(event)}>Reservations</button>}
 
