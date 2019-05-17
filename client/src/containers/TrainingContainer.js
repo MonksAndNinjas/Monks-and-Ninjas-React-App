@@ -159,10 +159,10 @@ class TrainingContainer extends React.Component {
       .then(data => data.forEach(reservation => this.addReservation(reservation)
     ));*/
 
-    fetch('api/client_infos', {
+    /*fetch('api/client_infos', {
       accept: 'application/json',
     }).then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => console.log(data));*/
   }
 }
 // fix this weird wording for double reservations

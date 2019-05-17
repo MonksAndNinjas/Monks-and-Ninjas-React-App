@@ -1,6 +1,7 @@
 import React from 'react';
 import BlogInput from '../Blog/BlogInput.js';
 import Blog from '../Blog/Blog.js';
+import Reservation from './Reservation.js';
 
 class AdminPage extends React.Component {
 
@@ -40,6 +41,7 @@ class AdminPage extends React.Component {
           ) : <button name='blog' onClick={event => this.handleClick(event)}>Blog</button>}
         { this.state.displayReservations ? (
           <div>
+            <Reservation reservations={this.props.reservations} />
           </div>
         ) : <button name='reservations' onClick={event => this.handleClick(event)}>Reservations</button>}
 

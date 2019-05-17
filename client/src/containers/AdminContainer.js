@@ -1,7 +1,6 @@
 import React from 'react';
 import Login from '../components/Admin/Login.js';
 import AdminPage from '../components/Admin/AdminPage.js';
-import Reservation from '../components/Admin/Reservation.js';
 
 import { connect } from 'react-redux';
 import { addBlogPost } from '../actions/posts.js';
@@ -10,7 +9,8 @@ import { deleteBlogPost } from '../actions/posts.js';
 class AdminContainer extends React.Component {
 
   state = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    clients: []
   }
 
   display = () => {
@@ -36,22 +36,23 @@ class AdminContainer extends React.Component {
   render() {
     return (
       <div>
-      { this.state.isLoggedIn ? <AdminPage blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost}/> : <Login display={this.display} /> }
+      { this.state.isLoggedIn ? <AdminPage reservations={this.props.reservations} blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost}/> : <Login display={this.display} /> }
       </div>
     )
   }
 
-  /*componentDidMount() {
-   fetch('api/posts', {
+  componentDidMount() {
+    fetch('api/client_infos', {
       accept: 'application/json',
     }).then(response => response.json())
-      .then(data => data.forEach(post => this.addBlogPost(post)))
-  }*/
+      .then(data => this.setState({ clients: data} ));
+  }
 }
 
 const mapStateToProps = state => {
   return({
-    blogPosts: state.blogPosts.blogPosts
+    blogPosts: state.blogPosts.blogPosts,
+    reservations: state.reservations.reservations
   })
 }
 
