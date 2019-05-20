@@ -14,6 +14,12 @@ class AdminContainer extends React.Component {
     clients: []
   }
 
+  loggedIn = (data) => {
+    if (data) {
+      this.display();
+    }
+  }
+
   display = () => {
     this.setState({
       isLoggedIn: true
@@ -61,7 +67,7 @@ class AdminContainer extends React.Component {
     fetch('api/users', {
       accept: 'application/json',
     }).then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => this.loggedIn(data))
   }
 }
 

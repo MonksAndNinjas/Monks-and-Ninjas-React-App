@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    current_user
+    render json: session[:user_id]
   end
 
   def create
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       if user.password === params[:password]
         session[:user_id] = user.id
 
-        render json: user
+        render json: session[:user_id]
       else
         render json: {'error': 'login is not valid'}
       end
