@@ -1,4 +1,6 @@
 import React from 'react';
+import Slider from '../Slider/Slider.js';
+
 
 class Services extends React.Component {
 
@@ -10,7 +12,7 @@ class Services extends React.Component {
 
     return (
       <div>
-        <ul>{services}</ul>
+        <Slider services={services} />
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React from 'react';
-import Slide from '../slide';
-import LeftArrow from '../left-arrow';
-import RightArrow from '../right-arrow';
+import Slide from './Slide.js';
+import RightArrow from './RightArrow.js';
+import LeftArrow from './LeftArrow.js';
 
 class Slider extends React.Component {
 
