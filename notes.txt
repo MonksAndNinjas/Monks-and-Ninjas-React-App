@@ -1,21 +1,18 @@
 What's next?
 
-=> Add ability to add, remove, edit blog posts
-=> Add rails/db for blog posts
-=> Move date for blog entry to container, out of components
-=> Add form for reservation
-=> Add listener for making reservation
-=> Add Social Media data
+
+
 => Add background, artwork and logo
-=> Add email response for contact and when reservation made
-=> Add css
-=> Add Fetch code to retrieve mock data from rails portion
-=> stop duplication of store objects when refreshing page
-=> find purpose for store
-=> admin page for blogs and reservations
+=> Add css, what is the design?
+=> Should I add a catch for the fetch promise?
+=> Email for contact
 
----Maybe add iFrame for location
+///////////  Future additions //////////////
 
+=> Edit blog posts, clients, and reservations
+=> Ability to enter new Admin users
+=> Either add note to reservation for type of service or add ability to select amongst available services
+=> Notify when reservation is made
 
   <Reservation availability={this.filterTime} isHidden={this.state.isHidden} addReservation={this.addReservation}  />
 <Availability date={this.state.date} availability={this.props.availability} addReservation={this.props.addReservation} />

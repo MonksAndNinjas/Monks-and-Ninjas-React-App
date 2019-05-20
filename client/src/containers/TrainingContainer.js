@@ -85,6 +85,7 @@ class TrainingContainer extends React.Component {
       .then(data => this.didItSave(data))
   }
 // double checks for errors
+// add send email notification to administrator that reservation was made
   didItSave = (data) => {
     if (data[0] !==  "not available") {
       this.addReservation(data.reservation)
