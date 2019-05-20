@@ -11,11 +11,14 @@ class AdminContainer extends React.Component {
 
   state = {
     isLoggedIn: false,
-    clients: []
+    user: '',
+    clients: [],
   }
 
   loggedIn = (data) => {
     if (data) {
+      this.setState({ user: data });
+
       this.display();
     }
   }
@@ -27,9 +30,17 @@ class AdminContainer extends React.Component {
   }
 
   logout = () => {
+    fetch('api/users/' + this.state.user, {
+      method: "delete",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => response.json())
+      .then(data => console.log(data))
+
     this.setState({
       isLoggedIn: false
-    })
+    });
   }
 
   addBlogPost = (postHash) => {
