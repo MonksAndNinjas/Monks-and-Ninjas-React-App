@@ -39,9 +39,8 @@ class BlogInput extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state)
-    })
-
-    this.props.onSubmit(this.state);
+    }).then(response => response.json())
+      .then(data => this.props.onSubmit(data))
   }
 
   render() {

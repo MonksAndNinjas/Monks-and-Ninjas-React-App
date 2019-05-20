@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addBlogPost } from '../actions/posts.js';
 import { addReservation } from '../actions/reservations';
-
+// gathers necessary data from Rails API for admin use and places in store
 class App extends Component {
 
   addBlogPost = (postHash) => {
@@ -13,7 +13,7 @@ class App extends Component {
   addReservation = (resHash) => {
     this.props.addReservation(resHash);
   };
-
+// consider placing components from index.js in App
   render() {
     return (
       <div>

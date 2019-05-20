@@ -2,7 +2,7 @@ import React from 'react';
 import BlogInput from '../Blog/BlogInput.js';
 import Blog from '../Blog/Blog.js';
 import Reservation from './Reservation.js';
-
+// handles what to display on the AdminPage: blog or reservations
 class AdminPage extends React.Component {
 
   state = {
@@ -12,6 +12,7 @@ class AdminPage extends React.Component {
 
   handleClick = event => {
     event.preventDefault();
+
     const path = event.target.name
 
     if (path === 'blog') {

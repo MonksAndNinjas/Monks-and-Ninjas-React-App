@@ -1,17 +1,12 @@
-export default function reservationReducer(state = {
-  reservations: []
-}, action) {
+export default function reservationReducer(state = [], action) {
   switch (action.type) {
 
     case 'ADD_RESERVATION':
-      return {
-        ...state,
-        reservations: [...state.reservations, action.reservation]
-      }
+      return [...state, action.reservation]
 
     case 'DELETE_RESERVATION':
-      const reservations = state.reservations.filter(reservation => reservation.id !== action.reservation.id);
-      
+      const reservations = state.filter(reservation => reservation.id !== action.reservation.id);
+      console.log(reservations)
       fetch('api/reservations/' + action.reservation.id, {
         method: "delete",
         headers: {
@@ -19,7 +14,7 @@ export default function reservationReducer(state = {
         }
       })
 
-      return { reservations: reservations }
+      return reservations
 
     default:
       return state;

@@ -152,23 +152,12 @@ class TrainingContainer extends React.Component {
         loading: false,     // is this the best place to turn loader off?
         services: data
       }));
-
-    /*fetch('api/reservations', {
-      accept: 'application/json',
-    }).then(response => response.json())
-      .then(data => data.forEach(reservation => this.addReservation(reservation)
-    ));*/
-
-    /*fetch('api/client_infos', {
-      accept: 'application/json',
-    }).then(response => response.json())
-      .then(data => console.log(data));*/
   }
 }
-// fix this weird wording for double reservations
+
 const mapStateToProps = state => {
   return({
-    reservations: state.reservations.reservations
+    reservations: state.reservations
   })
 }
 

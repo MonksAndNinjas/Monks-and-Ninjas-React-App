@@ -1,16 +1,11 @@
-export default function blogReducer(state = {
-  blogPosts: []
-}, action) {
+export default function blogReducer(state = [], action) {
   switch (action.type) {
 // add code to prevent duplicates
     case 'ADD_BLOG_POST':
-      return {
-        ...state,
-        blogPosts: [...state.blogPosts, action.blogPost]
-      }
+      return [...state, action.blogPost]
 
     case 'DELETE_BLOG_POST':
-      const posts = state.blogPosts.filter(post => post.id !== action.blogPost.id)
+      const posts = state.filter(post => post.id !== action.blogPost.id)
 
       fetch('api/posts/' + action.blogPost.id, {
         method: "delete",
@@ -19,7 +14,7 @@ export default function blogReducer(state = {
         }
       })
 
-      return { blogPosts: posts }
+      return posts
 
     default:
       return state;

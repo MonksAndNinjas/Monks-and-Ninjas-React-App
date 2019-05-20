@@ -4,7 +4,7 @@ import Blog from '../components/Blog/Blog.js';
 import { connect } from 'react-redux';
 
 class BlogContainer extends React.Component {
-
+// think about moving enableDelete answer
   render() {
     return (
       <div>
@@ -18,7 +18,7 @@ class BlogContainer extends React.Component {
 
 const mapStateToProps = state => {
   return({
-    blogPosts: state.blogPosts.blogPosts
+    blogPosts: state.blogPosts
   })
 }
 
