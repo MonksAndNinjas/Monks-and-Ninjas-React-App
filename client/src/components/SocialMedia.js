@@ -1,11 +1,13 @@
 import React from 'react';
+import { SocialIcon } from 'react-social-icons'
 
 class SocialMedia extends React.Component {
 
   render() {
     return (
       <div>
-        <p>This is subscriptions and Social Media</p>
+        <SocialIcon url="https://twitter.com/monksandninjas"/>
+        <SocialIcon url="https://www.instagram.com/monksandninjas/?hl=en" />
       </div>
     )
   }
