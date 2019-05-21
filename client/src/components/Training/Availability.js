@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './training.css';
+
 class Availability extends React.Component {
 
   handleClick = event => {
@@ -11,7 +13,7 @@ class Availability extends React.Component {
   render() {
 
     const renderTimes = this.props.filter(this.props.date).map((hash, index) => (
-      <li class="availableTime" key={index}>{hash.time} <button value={hash.time} onClick={event => this.handleClick(event)}>Reserve Time</button></li>
+      <li class="availableTime" key={index}><button value={hash.time} onClick={event => this.handleClick(event)}>Reserve Now for {hash.time}</button></li>
     ));
 
     return (

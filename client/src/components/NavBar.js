@@ -10,11 +10,11 @@ class NavBar extends React.Component {
       <div className="dropdown">
         <button className="dropbtn">Menu</button>
         <div className="dropdown-content">
-          <NavLink to="/" exact activeStyle={{ background: 'darkblue' }}>Home</NavLink>
-          <NavLink to="/about" exact activeStyle={{ background: 'darkblue' }}>About</NavLink>
-          <NavLink to="/training" exact activeStyle={{ background: 'darkblue' }}>Training</NavLink>
-          <NavLink to="/blog" exact activeStyle={{ background: 'darkblue' }}>Blog</NavLink>
-          <NavLink to="/contact" exact activeStyle={{ background: 'darkblue' }}>Contact</NavLink>
+          <NavLink to="/" exact activeStyle={{ background: 'grey' }}>Home</NavLink>
+          <NavLink to="/about" exact activeStyle={{ background: 'grey' }}>About</NavLink>
+          <NavLink to="/training" exact activeStyle={{ background: 'grey' }}>Training</NavLink>
+          <NavLink to="/blog" exact activeStyle={{ background: 'grey' }}>Blog</NavLink>
+          <NavLink to="/contact" exact activeStyle={{ background: 'grey' }}>Contact</NavLink>
         </div>
       </div>
     )

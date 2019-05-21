@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './training.css';
+
 class Services extends React.Component {
 
   render() {

@@ -9,6 +9,8 @@ import { addReservation } from '../actions/reservations';
 
 import { formattedDate } from '../helpers/helpers';
 
+import '../components/Training/training.css';
+
 import 'isomorphic-fetch';
 
 class TrainingContainer extends React.Component {
