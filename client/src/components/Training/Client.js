@@ -16,7 +16,7 @@ class Client extends React.Component {
 
   render() {
     return (
-      <div id="clientForm">
+      <div id="clientInput">
         <form onSubmit={event => this.handleClientSubmit(event)}>
           <label>
             Name

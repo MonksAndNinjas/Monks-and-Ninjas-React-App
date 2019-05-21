@@ -35,7 +35,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="adminLogin">
         <h1>Admin Login</h1>
         <form onSubmit={event => this.handleSubmit(event)}>
           <label>

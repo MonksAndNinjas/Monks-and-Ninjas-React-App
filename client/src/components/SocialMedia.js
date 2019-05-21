@@ -5,7 +5,7 @@ class SocialMedia extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="socialMedia">
         <SocialIcon url="https://twitter.com/monksandninjas"/>
         <SocialIcon url="https://www.instagram.com/monksandninjas/?hl=en" />
       </div>

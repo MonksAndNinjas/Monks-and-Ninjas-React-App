@@ -7,6 +7,8 @@ import Calendar from 'react-calendar';
 import { connect } from 'react-redux';
 import { addReservation } from '../actions/reservations';
 
+import { formattedDate } from '../helpers/helpers';
+
 import 'isomorphic-fetch';
 
 class TrainingContainer extends React.Component {
@@ -27,22 +29,6 @@ class TrainingContainer extends React.Component {
     loading: true,          // used for switching loading animation on/off
     date: new Date(),
   };
-// move to higher up the tree to use with blog and vise-versa
-// used for constructing simplified date
-  formattedDate = (date) => {
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const weekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-
-    var day = date.getDay();
-    var number = date.getDate();
-    var month = monthNames[date.getMonth()];
-    var year = date.getFullYear();
-    var weekday = weekNames[day];
-
-    var dateString = weekday + " " + month + " " + number + ", " + year;
-
-    return dateString
-  }
 
   handleDateChange = date => {
     this.setState({
@@ -117,6 +103,7 @@ class TrainingContainer extends React.Component {
 
   render() {
     let loading  = this.state.loading
+
     return (
       <div className="container">
         {loading ? (
@@ -127,7 +114,7 @@ class TrainingContainer extends React.Component {
 
             <Services services={this.state.services} />
             <Calendar onChange={this.handleDateChange} value={this.state.date} />
-            { this.state.isHidden ? <Availability date={this.formattedDate(this.state.date)} filter={this.filterTime} addReservation={this.addReservation} handleReservationSubmit={this.handleReservationSubmit} /> : null }
+            { this.state.isHidden ? <Availability date={formattedDate(this.state.date)} filter={this.filterTime} addReservation={this.addReservation} handleReservationSubmit={this.handleReservationSubmit} /> : null }
             { this.state.isHidden ? null : <Client handleClientChange={this.handleClientChange} handleClientSubmit={this.handleClientSubmit} name={this.state.name} phoneNumber={this.state.phoneNumber} email={this.state.email} /> }
           </div>
         )}
@@ -135,7 +122,6 @@ class TrainingContainer extends React.Component {
     )
   }
 // fetch calls from Rails api
-// look into promises and loading animation when fetch is complete
   componentDidMount() {
     fetch('api/availabilities', {
       accept: 'application/json',

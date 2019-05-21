@@ -31,23 +31,23 @@ class AdminPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <h1>Admin page</h1>
 
         { this.state.displayBlog ? (
-          <div>
-            <BlogInput onSubmit={this.props.addBlogPost} />
+          <div className="adminMenu">
+            <BlogInput formattedDate={this.props.formattedDate} onSubmit={this.props.addBlogPost} />
             <Blog blogPosts={this.props.blogPosts} delete={this.props.delete} enableDelete={false}/>
           </div>
           ) : <button name='blog' onClick={event => this.handleClick(event)}>Blog</button>}
         { this.state.displayReservations ? (
-          <div>
+          <div className="adminMenu">
             <Reservation reservations={this.props.reservations} findClient={this.props.findClient} delete={this.props.deleteReservation} />
           </div>
         ) : <button name='reservations' onClick={event => this.handleClick(event)}>Reservations</button>}
 
         <button onClick={event => this.handleClick(event)}>Log Out</button>
-      </div>
+      </>
     )
   }
 }

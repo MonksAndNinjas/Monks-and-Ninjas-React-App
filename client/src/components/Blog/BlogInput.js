@@ -6,27 +6,12 @@ class BlogInput extends React.Component {
     content: '',
     post_date: ''
   }
-// used for displaying simplified date of post
-  formattedDate = (date) => {
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const weekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-
-    var day = date.getDay();
-    var number = date.getDate();
-    var month = monthNames[date.getMonth()];
-    var year = date.getFullYear();
-    var weekday = weekNames[day];
-
-    var dateString = weekday + " " + month + " " + number + ", " + year;
-
-    return dateString
-  }
 
   handleChange = event => {
     event.persist()
     this.setState({
       [event.target.name]: event.target.value,
-      post_date: this.formattedDate(new Date())
+      post_date: this.props.formattedDate(new Date())
     })
   }
 // makes post request to Rails api
@@ -45,7 +30,7 @@ class BlogInput extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="blogInput">
         <h2>Post a new blog here</h2>
 
         <form onSubmit={event => this.handleSubmit(event)}>

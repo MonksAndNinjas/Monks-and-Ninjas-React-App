@@ -7,12 +7,15 @@ import { addBlogPost } from '../actions/posts.js';
 import { deleteBlogPost } from '../actions/posts.js';
 import { deleteReservation } from '../actions/reservations.js';
 
+import { formattedDate } from '../helpers/helpers.js';
+
 class AdminContainer extends React.Component {
 
   state = {
     isLoggedIn: false,      // is admin user logged in?
     user: '',               // if admin user logged in, then user id will be saved here
     clients: [],            // list of all clients stored here
+    loading: true           // checking sessions from Rails API
   }
 // validates user and displays content for admin user
   loggedIn = (user) => {
@@ -58,9 +61,19 @@ class AdminContainer extends React.Component {
   }
 
   render() {
+    let loading  = this.state.loading
+
     return (
-      <div>
-      { this.state.isLoggedIn ? <AdminPage reservations={this.props.reservations} blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost} findClient={this.findClient} deleteReservation={this.deleteReservation} /> : <Login display={this.display} /> }
+      <div className="container">
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <div id="adminWrapper">
+            <React.Fragment>
+              { this.state.isLoggedIn ? <AdminPage reservations={this.props.reservations} formattedDate={formattedDate} blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost} findClient={this.findClient} deleteReservation={this.deleteReservation} /> : <Login display={this.display} /> }
+            </React.Fragment>
+          </div>
+        )}
       </div>
     )
   }
@@ -75,6 +88,9 @@ class AdminContainer extends React.Component {
       accept: 'application/json',
     }).then(response => response.json())
       .then(data => this.loggedIn(data))
+      .then(data => this.setState({
+        loading: false,     // is this the best place to turn loader off?
+      }));
   }
 }
 
