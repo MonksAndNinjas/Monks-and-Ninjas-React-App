@@ -5,11 +5,11 @@ class Blog extends React.Component {
   render() {
 
     const renderPosts = this.props.blogPosts.map((post, index) => (
-      <ul key={index}>Title: {post.title}<br/>Content: {post.content}<br/>Posted On: {post.post_date}{this.props.enableDelete ? null : <button onClick={() => this.props.delete(post)}>DELETE</button>}</ul>
+      <ul id={`blog-${index}`} key={index}><p>Title: {post.title}</p><p>Content: {post.content}</p><p>Posted On: {post.post_date}{this.props.enableDelete ? null : <button onClick={() => this.props.delete(post)}>DELETE</button>}</p></ul>
     ));
 
     return (
-      <div>
+      <div id="blogWrapper">
         <h2>Blog Archive</h2>
         { renderPosts }
       </div>

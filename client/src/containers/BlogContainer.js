@@ -7,7 +7,7 @@ class BlogContainer extends React.Component {
 // think about moving enableDelete answer
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Blog</h1>
 
         <Blog blogPosts={this.props.blogPosts} delete={this.deleteBlogPost} enableDelete={true} />
