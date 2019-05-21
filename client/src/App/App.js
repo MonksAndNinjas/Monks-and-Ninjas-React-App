@@ -16,8 +16,8 @@ class App extends Component {
 // consider placing components from index.js in App
   render() {
     return (
-      <div>
-      </div>
+      <>
+      </>
     );
   }
 

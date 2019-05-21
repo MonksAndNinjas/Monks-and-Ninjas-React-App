@@ -52,9 +52,9 @@ ReactDOM.render((
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/admin" component={AdminContainer} />
         <Footer />
+        <App />
       </React.Fragment>
     </Router>
-    <App />
   </Provider>),
   document.getElementById('root')
 );
