@@ -4,8 +4,8 @@ What's next?
 
 => Add background, artwork and logo
 => Add css, what is the design?
-=> Should I add a catch for the fetch promise?
-=> Email for contact
+=> Add requirements for user or admin inputs
+
 
 ///////////  Future additions //////////////
 

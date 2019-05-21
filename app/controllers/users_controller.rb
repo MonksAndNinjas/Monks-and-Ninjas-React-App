@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-
+#sends back session if there is one; for admin
   def index
     render json: session[:user_id]
   end
-
-  def create
+# authenticates and then logs user in for admin
+  def create                          
     user = User.find_by(username: params[:username])
 
     if user
