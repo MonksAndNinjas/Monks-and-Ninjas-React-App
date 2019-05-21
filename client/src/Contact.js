@@ -6,9 +6,9 @@ class Contact extends React.Component {
       <div>
         <h1>Contact</h1>
 
-        <p>Phone Number goes here</p>
-        <p>Email goes here</p>
-        <p>Location goes here</p>
+        <p>Phone: 720.220.1556</p>
+        <p>Email: <a href="mailto:joseph@monksandninjas.com?subject=Monks and Ninjas Inquiry">Joseph@MonksAndNinjas.com</a></p>
+        <p>Boulder, CO</p>
       </div>
     )
   }
