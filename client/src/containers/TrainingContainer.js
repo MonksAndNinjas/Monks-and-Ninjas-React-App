@@ -118,13 +118,11 @@ class TrainingContainer extends React.Component {
   render() {
     let loading  = this.state.loading
     return (
-      <div>
+      <div className="container">
         {loading ? (
-          <div>
             <h1>Loading...</h1>
-          </div>
         ) : (
-          <div>
+          <div id="trainingWrapper">
             <h1>Training</h1>
 
             <Services services={this.state.services} />

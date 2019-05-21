@@ -5,7 +5,7 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="navBar">
         <NavLink to="/" exact activeStyle={{ background: 'darkblue' }}>Home</NavLink>
         <NavLink to="/about" exact activeStyle={{ background: 'darkblue' }}>About</NavLink>
         <NavLink to="/training" exact activeStyle={{ background: 'darkblue' }}>Training</NavLink>

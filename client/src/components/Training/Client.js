@@ -4,7 +4,7 @@ class Client extends React.Component {
 
   handleClientChange = event => {
     event.persist();
-    
+
     this.props.handleClientChange(event)
   }
 
@@ -16,7 +16,7 @@ class Client extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="clientForm">
         <form onSubmit={event => this.handleClientSubmit(event)}>
           <label>
             Name

@@ -11,14 +11,14 @@ class Availability extends React.Component {
   render() {
 
     const renderTimes = this.props.filter(this.props.date).map((hash, index) => (
-      <li key={index}>{hash.time} <button value={hash.time} onClick={event => this.handleClick(event)}>Reserve Time</button></li>
+      <li class="availableTime" key={index}>{hash.time} <button value={hash.time} onClick={event => this.handleClick(event)}>Reserve Time</button></li>
     ));
 
     return (
-      <div>
+      <div id="availabilityWrapper">
         <span>{this.props.date}</span>
 
-        <ul>{renderTimes}</ul>
+        <ul id="availability">{renderTimes}</ul>
       </div>
     )
   }
