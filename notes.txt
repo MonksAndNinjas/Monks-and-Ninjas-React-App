@@ -3,7 +3,7 @@ What's next?
 
 
 => Add background, artwork and logo
-=> Add css, what is the design?
+=> Add css for admin login, comic caption style when hover over menu
 => Add requirements for user or admin inputs
 
 
