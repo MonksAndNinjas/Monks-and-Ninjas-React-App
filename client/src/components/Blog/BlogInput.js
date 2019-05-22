@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../Admin/Admin.css';
+
 class BlogInput extends React.Component {
   state = {
     title: '',
@@ -31,7 +33,7 @@ class BlogInput extends React.Component {
   render() {
     return (
       <div id="blogInput">
-        <h2>Post a new blog here</h2>
+        <h2>New Post</h2>
 
         <form onSubmit={event => this.handleSubmit(event)}>
           <label>
