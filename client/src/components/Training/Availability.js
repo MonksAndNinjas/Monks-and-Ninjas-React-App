@@ -13,7 +13,7 @@ class Availability extends React.Component {
   render() {
 
     const renderTimes = this.props.filter(this.props.date).map((hash, index) => (
-      <li class="availableTime" key={index}><button value={hash.time} onClick={event => this.handleClick(event)}>Reserve Now for {hash.time}</button></li>
+      <li className="availableTime" key={index}><button value={hash.time} onClick={event => this.handleClick(event)}>Reserve Now for {hash.time}</button></li>
     ));
 
     return (

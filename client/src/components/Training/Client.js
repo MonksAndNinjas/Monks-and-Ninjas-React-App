@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './training.css';
+
 class Client extends React.Component {
 
   handleClientChange = event => {
@@ -17,6 +19,7 @@ class Client extends React.Component {
   render() {
     return (
       <div id="clientInput">
+        <p style={{ color: 'red' }}>* Now your information *</p>
         <form onSubmit={event => this.handleClientSubmit(event)}>
           <label>
             Name

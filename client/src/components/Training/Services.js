@@ -12,6 +12,7 @@ class Services extends React.Component {
 
     return (
       <div id="services">
+        <h2>Services offered</h2>
         {services}
       </div>
     )

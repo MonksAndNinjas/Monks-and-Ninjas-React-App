@@ -53,7 +53,7 @@ class TrainingContainer extends React.Component {
         client: {
           reservation: {
             time: event.target.value,
-            date: this.formattedDate(this.state.date)
+            date: formattedDate(this.state.date)
           },
         },
         isHidden: !this.state.isHidden
@@ -115,6 +115,9 @@ class TrainingContainer extends React.Component {
             <h1>Training</h1>
 
             <Services services={this.state.services} />
+
+            <h2>Make a Reservation</h2>
+
             <Calendar onChange={this.handleDateChange} value={this.state.date} />
             { this.state.isHidden ? <Availability date={formattedDate(this.state.date)} filter={this.filterTime} addReservation={this.addReservation} handleReservationSubmit={this.handleReservationSubmit} /> : null }
             { this.state.isHidden ? null : <Client handleClientChange={this.handleClientChange} handleClientSubmit={this.handleClientSubmit} name={this.state.name} phoneNumber={this.state.phoneNumber} email={this.state.email} /> }
