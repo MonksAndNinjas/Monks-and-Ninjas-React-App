@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+import sketch from './sketch.js';
+import P5Wrapper from 'react-p5-wrapper';
+import './sketch.css';
+
 import { connect } from 'react-redux';
 import { addBlogPost } from '../actions/posts.js';
 import { addReservation } from '../actions/reservations';
@@ -17,6 +21,7 @@ class App extends Component {
   render() {
     return (
       <>
+        <P5Wrapper sketch={sketch} />
       </>
     );
   }

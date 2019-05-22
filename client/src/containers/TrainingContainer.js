@@ -104,10 +104,11 @@ class TrainingContainer extends React.Component {
   }
 
   render() {
-    let loading  = this.state.loading
+    let loading  = this.state.loading;
 
     return (
-      <div className="container">
+      <div className="container" >
+
         {loading ? (
             <h1>Loading...</h1>
         ) : (
