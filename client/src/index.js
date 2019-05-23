@@ -40,6 +40,7 @@ const Header = () =>
 const Footer = () =>
   <footer><SocialMedia /></footer>;
 
+
 ReactDOM.render((
   <Provider store={store}>
     <Router>

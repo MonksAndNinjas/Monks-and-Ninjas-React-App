@@ -10,67 +10,147 @@ export default function sketch (p) {
     let height = window.outerHeight * 2;
     let stepDistance = 10;
     let multiplier = (width / 10) / 140;
+    let from = p.color(255, 204, 0, 5);
+    let to = p.color(255, 250, 250, 5);
+    let inter = p.lerpColor(from, to, .1)
+    let dim = 140;
 
     p.background('white')
-    p.stroke(0, 0, 0, 25)
 
-    p.translate(width / 10, height / 2)
-    p.scale(multiplier)
+    if (window.location.pathname === "/training") {
 
-  //  p.translate(stepDistance + stepMultiplier, 0)
+      p.translate(width / 10, height / 2)
+      p.scale(multiplier)
 
-    p.fill(255, 204, 0, 25)
-    p.triangle(50, 0, 0, 150, -50, 0)
-    p.triangle(0, 0, -300, 5000, 300, 5000)
+    //  p.translate(stepDistance + stepMultiplier, 0)
 
-    p.rotate(100)
-    p.triangle(50, 0, 0, 150, -50, 0)
-    p.triangle(0, 0, -300, 5000, 300, 5000)
+      p.fill(inter)
+      p.noStroke()
 
-    p.rotate(100)
-    p.triangle(50, 0, 0, 150, -50, 0)
-    p.triangle(0, 0, -300, 5000, 300, 5000)
+      p.triangle(50, 0, 0, 150, -50, 0)
 
-    p.rotate(100)
-    p.triangle(50, 0, 0, 150, -50, 0)
-    p.triangle(0, 0, -300, 5000, 300, 5000)
+      p.push()
+      p.rotate(Math.PI/16)
+      p.triangle(50, 0, 0, 300, -50, 0)
+      p.pop()
 
-    p.rotate(100)
-    p.triangle(50, 0, 0, 150, -50, 0)
-    p.triangle(0, 0, -300, 5000, 300, 5000)
+      p.triangle(0, 0, -300, 5000, 300, 5000)
+////////////////////
+      p.rotate(100)
+      p.triangle(50, 0, 0, 150, -50, 0)
 
-    p.rotate(100)
-    p.triangle(50, 0, 0, 150, -50, 0)
-    p.triangle(0, 0, -300, 5000, 300, 5000)
+      p.push()
+      p.rotate(Math.PI/16)
+      p.triangle(50, 0, 0, 300, -50, 0)
+      p.pop()
 
-    p.rotate(100)
-    p.triangle(50, 0, 0, 150, -50, 0)
-    p.triangle(0, 0, -300, 5000, 300, 5000)
+      p.triangle(0, 0, -300, 5000, 300, 5000)
+///////////////////////////
+      p.rotate(100)
+      p.triangle(50, 0, 0, 150, -50, 0)
 
-    p.rotate(100)
-    p.triangle(50, 0, 0, 150, -50, 0)
-    p.triangle(0, 0, -300, 5000, 300, 5000)
+      p.push()
+      p.rotate(Math.PI/16)
+      p.triangle(50, 0, 0, 300, -50, 0)
+      p.pop()
 
-    p.rotate(100)
-    p.triangle(50, 0, 0, 150, -50, 0)
-    p.triangle(0, 0, -300, 5000, 300, 5000)
+      p.triangle(0, 0, -300, 5000, 300, 5000)
+//////////////////////
+      p.rotate(100)
+      p.triangle(50, 0, 0, 150, -50, 0)
 
-    p.rotate(100)
-    p.triangle(50, 0, 0, 150, -50, 0)
-    p.triangle(0, 0, -300, 5000, 300, 5000)
+      p.push()
+      p.rotate(Math.PI/16)
+      p.triangle(50, 0, 0, 300, -50, 0)
+      p.pop()
 
-    p.rotate(100)
-    p.triangle(50, 0, 0, 150, -50, 0)
-    p.triangle(0, 0, -300, 5000, 300, 5000)
+      p.triangle(0, 0, -300, 5000, 300, 5000)
+/////////////////////
+      p.rotate(100)
+      p.triangle(50, 0, 0, 150, -50, 0)
 
-    p.rotate(100)
-    p.triangle(50, 0, 0, 150, -50, 0)
-    p.triangle(0, 0, -300, 5000, 300, 5000)
+      p.push()
+      p.rotate(Math.PI/16)
+      p.triangle(50, 0, 0, 300, -50, 0)
+      p.pop()
 
-    p.fill('white')
-    p.ellipse(0, 0, 140, 140)
+      p.triangle(0, 0, -300, 5000, 300, 5000)
+//////////////////
+      p.rotate(100)
+      p.triangle(50, 0, 0, 150, -50, 0)
+
+      p.push()
+      p.rotate(Math.PI/16)
+      p.triangle(50, 0, 0, 300, -50, 0)
+      p.pop()
+
+      p.triangle(0, 0, -300, 5000, 300, 5000)
+//////////////////
+      p.rotate(100)
+      p.triangle(50, 0, 0, 150, -50, 0)
+
+      p.push()
+      p.rotate(Math.PI/16)
+      p.triangle(50, 0, 0, 300, -50, 0)
+      p.pop()
+
+      p.triangle(0, 0, -300, 5000, 300, 5000)
+///////////////////
+      p.rotate(100)
+      p.triangle(50, 0, 0, 150, -50, 0)
+
+      p.push()
+      p.rotate(Math.PI/16)
+      p.triangle(50, 0, 0, 300, -50, 0)
+      p.pop()
+
+      p.triangle(0, 0, -300, 5000, 300, 5000)
+///////////////////
+      p.rotate(100)
+      p.triangle(50, 0, 0, 150, -50, 0)
+
+      p.push()
+      p.rotate(Math.PI/16)
+      p.triangle(50, 0, 0, 300, -50, 0)
+      p.pop()
+
+      p.triangle(0, 0, -300, 5000, 300, 5000)
+///////////////////////
+      p.rotate(100)
+      p.triangle(50, 0, 0, 150, -50, 0)
+
+      p.push()
+      p.rotate(Math.PI/16)
+      p.triangle(50, 0, 0, 300, -50, 0)
+      p.pop()
+
+      p.triangle(0, 0, -300, 5000, 300, 5000)
+/////////////////
+      p.rotate(100)
+      p.triangle(50, 0, 0, 150, -50, 0)
+
+      p.push()
+      p.rotate(Math.PI/16)
+      p.triangle(50, 0, 0, 300, -50, 0)
+      p.pop()
+
+      p.triangle(0, 0, -300, 5000, 300, 5000)
+/////////////////
+      p.rotate(100)
+      p.triangle(50, 0, 0, 150, -50, 0)
+
+      p.push()
+      p.rotate(Math.PI/16)
+      p.triangle(50, 0, 0, 300, -50, 0)
+      p.pop()
+
+      p.triangle(0, 0, -300, 5000, 300, 5000)
+
+      p.fill('white')
+      p.ellipse(0, 0, 140, 140)
 
 
-    stepMultiplier = stepMultiplier + .25;
+      stepMultiplier = stepMultiplier + .25;
+    }
   };
 };
