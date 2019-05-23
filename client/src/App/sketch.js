@@ -13,7 +13,6 @@ export default function sketch (p) {
     let from = p.color(255, 204, 0, 5);
     let to = p.color(255, 250, 250, 5);
     let inter = p.lerpColor(from, to, .1)
-    let dim = 140;
 
     p.background('white')
 
@@ -22,7 +21,49 @@ export default function sketch (p) {
       p.translate(width / 10, height / 2)
       p.scale(multiplier)
 
-    //  p.translate(stepDistance + stepMultiplier, 0)
+      p.push()
+
+      p.translate(stepDistance + stepMultiplier, 0)
+
+      p.fill(173, 216, 230)
+      p.rect(50, 90, 200, 100)
+
+
+      p.ellipse(60, 90, 60, 60)
+
+      p.fill(0, 0, 255, 10)
+      p.ellipse(145, 150, 100, 100)
+
+      p.fill(0, 0, 255, 10)
+      p.ellipse(70, 150, 130, 100)
+      p.fill(173, 216, 230)
+      p.ellipse(60, 150, 130, 100)
+
+      p.ellipse(170, 60, 100, 100)
+      p.ellipse(100, 90, 80, 80)
+      p.ellipse(230, 80, 70, 70)
+
+      p.fill(0, 0, 255, 10)
+      p.ellipse(220, 130, 130, 130)
+      p.fill(173, 216, 230)
+      p.ellipse(230, 140, 130, 130)
+
+      p.fill(0, 0, 255, 10)
+      p.ellipse(160, 170, 80, 70)
+      p.fill(173, 216, 230)
+      p.ellipse(160, 180, 80, 70)
+
+      p.ellipse(95, 175, 60, 60)
+      p.ellipse(0, 155, 50, 50)
+      p.ellipse(-20, 165, 30, 30)
+      p.ellipse(-40, 135, 10, 10)
+      p.ellipse(-60, 125, 6, 6)
+
+
+      p.triangle(0, 170, -100, 170, 0, 150)
+
+      p.pop()
+///////////////
 
       p.fill(inter)
       p.noStroke()
