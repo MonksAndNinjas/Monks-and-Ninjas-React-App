@@ -17,27 +17,44 @@ export default function sketch (p) {
     let height = window.outerHeight * 2;
     let stepDistance = 10;
     let multiplier = (width / 10) / 140;
-    let from = p.color(255, 204, 0, 4);
-    let to = p.color(255, 250, 250, 4);
-    let inter = p.lerpColor(from, to, .1)
 
     p.background('white')
 
     if (window.location.pathname === "/training") {
-
       p.translate(width / 10, height / 2)
       p.scale(multiplier)
 
       p.push()
-
       p.translate(stepDistance + stepMultiplier, 0)
-
       cloud.display(p)
-
       p.pop()
-///////////////
+
+      p.push()
+      p.translate((stepDistance * -5) + (stepMultiplier * 2), -100)
+      p.scale(multiplier / 2)
+      cloud.display(p)
+      p.pop()
+
+      p.push()
+      p.translate((stepDistance * -10) + (stepMultiplier * 6), -400)
+      p.scale(multiplier / 4)
+      cloud.display(p)
+      p.pop()
+
+      p.push()
+      p.translate((stepDistance * -40) + (stepMultiplier * 4), 400)
+      p.scale(multiplier * 1.25)
+      cloud.display(p)
+      p.pop()
+
+      p.push()
+      p.translate((stepDistance * -40) + (stepMultiplier * 8), -600)
+      p.scale(multiplier * .75)
+      cloud.display(p)
+      p.pop()
+
       sun.display(p)
-    
+
       stepMultiplier = stepMultiplier + .25;
     }
   };
