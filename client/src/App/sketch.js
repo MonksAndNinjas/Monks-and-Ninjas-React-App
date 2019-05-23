@@ -1,12 +1,15 @@
 import Cloud from './sketch_cloud.js';
+import Sun from './sketch_sun.js';
 
 export default function sketch (p) {
   let stepMultiplier = 0;
   let cloud;
+  let sun;
 
   p.setup = function () {
     p.createCanvas(window.outerWidth, window.outerHeight * 2);
     cloud = new Cloud(p)
+    sun = new Sun(p)
   };
 
   p.draw = function () {
@@ -33,133 +36,8 @@ export default function sketch (p) {
 
       p.pop()
 ///////////////
-
-      p.fill(inter)
-      p.noStroke()
-
-      p.triangle(50, 0, 0, 150, -50, 0)
-
-      p.push()
-      p.rotate(Math.PI/16)
-      p.triangle(50, 0, 0, 300, -50, 0)
-      p.pop()
-
-      p.triangle(0, 0, -300, 5000, 300, 5000)
-////////////////////
-      p.rotate(100)
-      p.triangle(50, 0, 0, 150, -50, 0)
-
-      p.push()
-      p.rotate(Math.PI/16)
-      p.triangle(50, 0, 0, 300, -50, 0)
-      p.pop()
-
-      p.triangle(0, 0, -300, 5000, 300, 5000)
-///////////////////////////
-      p.rotate(100)
-      p.triangle(50, 0, 0, 150, -50, 0)
-
-      p.push()
-      p.rotate(Math.PI/16)
-      p.triangle(50, 0, 0, 300, -50, 0)
-      p.pop()
-
-      p.triangle(0, 0, -300, 5000, 300, 5000)
-//////////////////////
-      p.rotate(100)
-      p.triangle(50, 0, 0, 150, -50, 0)
-
-      p.push()
-      p.rotate(Math.PI/16)
-      p.triangle(50, 0, 0, 300, -50, 0)
-      p.pop()
-
-      p.triangle(0, 0, -300, 5000, 300, 5000)
-/////////////////////
-      p.rotate(100)
-      p.triangle(50, 0, 0, 150, -50, 0)
-
-      p.push()
-      p.rotate(Math.PI/16)
-      p.triangle(50, 0, 0, 300, -50, 0)
-      p.pop()
-
-      p.triangle(0, 0, -300, 5000, 300, 5000)
-//////////////////
-      p.rotate(100)
-      p.triangle(50, 0, 0, 150, -50, 0)
-
-      p.push()
-      p.rotate(Math.PI/16)
-      p.triangle(50, 0, 0, 300, -50, 0)
-      p.pop()
-
-      p.triangle(0, 0, -300, 5000, 300, 5000)
-//////////////////
-      p.rotate(100)
-      p.triangle(50, 0, 0, 150, -50, 0)
-
-      p.push()
-      p.rotate(Math.PI/16)
-      p.triangle(50, 0, 0, 300, -50, 0)
-      p.pop()
-
-      p.triangle(0, 0, -300, 5000, 300, 5000)
-///////////////////
-      p.rotate(100)
-      p.triangle(50, 0, 0, 150, -50, 0)
-
-      p.push()
-      p.rotate(Math.PI/16)
-      p.triangle(50, 0, 0, 300, -50, 0)
-      p.pop()
-
-      p.triangle(0, 0, -300, 5000, 300, 5000)
-///////////////////
-      p.rotate(100)
-      p.triangle(50, 0, 0, 150, -50, 0)
-
-      p.push()
-      p.rotate(Math.PI/16)
-      p.triangle(50, 0, 0, 300, -50, 0)
-      p.pop()
-
-      p.triangle(0, 0, -300, 5000, 300, 5000)
-///////////////////////
-      p.rotate(100)
-      p.triangle(50, 0, 0, 150, -50, 0)
-
-      p.push()
-      p.rotate(Math.PI/16)
-      p.triangle(50, 0, 0, 300, -50, 0)
-      p.pop()
-
-      p.triangle(0, 0, -300, 5000, 300, 5000)
-/////////////////
-      p.rotate(100)
-      p.triangle(50, 0, 0, 150, -50, 0)
-
-      p.push()
-      p.rotate(Math.PI/16)
-      p.triangle(50, 0, 0, 300, -50, 0)
-      p.pop()
-
-      p.triangle(0, 0, -300, 5000, 300, 5000)
-/////////////////
-      p.rotate(100)
-      p.triangle(50, 0, 0, 150, -50, 0)
-
-      p.push()
-      p.rotate(Math.PI/16)
-      p.triangle(50, 0, 0, 300, -50, 0)
-      p.pop()
-
-      p.triangle(0, 0, -300, 5000, 300, 5000)
-
-      p.fill('white')
-      p.ellipse(0, 0, 140, 140)
-
-
+      sun.display(p)
+    
       stepMultiplier = stepMultiplier + .25;
     }
   };
