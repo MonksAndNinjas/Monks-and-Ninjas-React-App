@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-
-import sketch from './sketch.js';
+// for displaying sketch in training page
+import sketch from './sketch/sketch.js';
 import P5Wrapper from 'react-p5-wrapper';
-import './sketch.css';
-
+import './sketch/sketch.css';
+// for connecting to store
 import { connect } from 'react-redux';
 import { addBlogPost } from '../actions/posts.js';
 import { addReservation } from '../actions/reservations';
 // gathers necessary data from Rails API for admin use and places in store
 class App extends Component {
 
-  addBlogPost = (postHash) => {
-    this.props.addBlogPost(postHash);
+  addBlogPost = (post) => {
+    this.props.addBlogPost(post);
   };
 
-  addReservation = (resHash) => {
-    this.props.addReservation(resHash);
+  addReservation = (reservation) => {
+    this.props.addReservation(reservation);
   };
-// consider placing components from index.js in App
+
   render() {
     return (
       <>
@@ -41,7 +41,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return({
-    blogPosts: state.blogPosts.blogPosts
+    blogPosts: state.blogPosts
   })
 }
 

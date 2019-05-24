@@ -1,7 +1,7 @@
 import React from 'react';
-
-import './training.css';
-
+// styling
+import './Training.css';
+// used for displaying client form and gathering of client info
 class Client extends React.Component {
 
   handleClientChange = event => {

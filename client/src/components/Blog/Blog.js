@@ -1,7 +1,7 @@
 import React from 'react';
-
-import './blog.css';
-
+// styling
+import './Blog.css';
+// displays blog posts in Admin and Blog page
 class Blog extends React.Component {
 
   render() {
@@ -13,6 +13,7 @@ class Blog extends React.Component {
     return (
       <div id="blogWrapper">
         <h2>Blog Archive</h2>
+        
         { renderPosts }
       </div>
     )

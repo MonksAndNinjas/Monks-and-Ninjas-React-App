@@ -1,7 +1,7 @@
 import React from 'react';
-
-import './training.css';
-
+// styling
+import './Training.css';
+// used for displaying services from API
 class Services extends React.Component {
 
   render() {

@@ -1,8 +1,9 @@
 import React from 'react';
+// helper for social icons
 import { SocialIcon } from 'react-social-icons'
-
-import './socialMedia.css';
-
+// stying
+import './SocialMedia.css';
+// displays Social Media icons in footer
 class SocialMedia extends React.Component {
 
   render() {

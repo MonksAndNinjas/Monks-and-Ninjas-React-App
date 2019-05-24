@@ -9,12 +9,12 @@
   background-color: white;
 }
 
-#blogInput input {
+#blogInput input, #adminLogin input {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   margin-bottom: 5px;
 }
 
-#blogInput {
+#blogInput, #adminLogin {
   display: table-caption;
 }
 

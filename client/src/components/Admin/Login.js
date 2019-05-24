@@ -1,4 +1,6 @@
 import React from 'react';
+// styling
+import './Admin.css';
 
 class Login extends React.Component {
 

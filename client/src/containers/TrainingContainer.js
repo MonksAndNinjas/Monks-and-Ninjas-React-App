@@ -3,16 +3,16 @@ import Services from '../components/Training/Services.js';
 import Availability from '../components/Training/Availability.js';
 import Client from '../components/Training/Client.js';
 import Calendar from 'react-calendar';
-
+// connects to store
 import { connect } from 'react-redux';
 import { addReservation } from '../actions/reservations';
-
+// allows use of function
 import { formattedDate } from '../helpers/helpers';
-
-import '../components/Training/training.css';
-
+// styling
+import '../components/Training/Training.css';
+// for making posts of data to API
 import 'isomorphic-fetch';
-
+// main container for Training page
 class TrainingContainer extends React.Component {
 
   state = {
@@ -59,7 +59,7 @@ class TrainingContainer extends React.Component {
         isHidden: !this.state.isHidden
       })
   }
-// make a post request to the rails backend where it data will be saved
+  // make a post request to the rails backend where it data will be saved
   handleClientSubmit = event => {
     this.setState({ isHidden: !this.state.isHidden })
 
@@ -72,18 +72,18 @@ class TrainingContainer extends React.Component {
     }).then(response => response.json())
       .then(data => this.didItSave(data))
   }
-// double checks for errors
-// add send email notification to administrator that reservation was made
+  // double checks for errors
+  // add send email notification to administrator that reservation was made
   didItSave = (data) => {
     if (data[0] !==  "not available") {
       this.addReservation(data.reservation)
     }
   }
-// reservation and client is successful and reservation is entered into store
+  // reservation and client is successful and reservation is entered into store
   addReservation = (resHash) => {
     this.props.addReservation(resHash);
   };
-// checks store to remove date and times that are taken
+  // checks store to remove date and times that are taken
   filterTime = (date) => {
    var unfilteredList = this.state.availableTimes;
    var busyList = this.props.reservations;

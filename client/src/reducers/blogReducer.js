@@ -1,6 +1,6 @@
 export default function blogReducer(state = [], action) {
   switch (action.type) {
-// add code to prevent duplicates
+
     case 'ADD_BLOG_POST':
       return [...state, action.blogPost]
 

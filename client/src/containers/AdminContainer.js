@@ -1,14 +1,14 @@
 import React from 'react';
 import Login from '../components/Admin/Login.js';
 import AdminPage from '../components/Admin/AdminPage.js';
-
+// connects to store
 import { connect } from 'react-redux';
 import { addBlogPost } from '../actions/posts.js';
 import { deleteBlogPost } from '../actions/posts.js';
 import { deleteReservation } from '../actions/reservations.js';
-
+// allows use of function
 import { formattedDate } from '../helpers/helpers.js';
-
+// main handler for Admin page
 class AdminContainer extends React.Component {
 
   state = {

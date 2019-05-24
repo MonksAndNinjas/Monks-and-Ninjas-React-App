@@ -1,28 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App/App.js';
-
+// allows use of store
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-
+// combines and uses reducers
 import { combineReducers } from 'redux';
 import blogReducer from './reducers/blogReducer.js';
 import reservationReducer from './reducers/reservationReducer';
-
+// styling
 import './index.css';
-
+// main handlers for given routes
 import Home from './Home';
 import About from './About';
 import TrainingContainer from './containers/TrainingContainer';
 import BlogContainer from './containers/BlogContainer';
 import Contact from './Contact';
 import AdminContainer from './containers/AdminContainer';
-
+// code used for displaying in header and footer
 import SocialMedia from './components/SocialMedia';
 import NavBar from './components/NavBar';
 
 import * as serviceWorker from './serviceWorker';
-
+// allows ability to create routes
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const rootReducer = combineReducers({

@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+// allows use of logo for menu button
 import logo from './monks_and_ninjas_logo.svg';
-
+// styling
 import './NavBar.css';
-
+// used for displaying navigation bar
 class NavBar extends React.Component {
 
   render() {

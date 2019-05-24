@@ -2,16 +2,16 @@ import React from 'react';
 import BlogInput from '../Blog/BlogInput.js';
 import Blog from '../Blog/Blog.js';
 import Reservation from './Reservation.js';
-
+// styling
 import './Admin.css';
 // handles what to display on the AdminPage: blog or reservations
 class AdminPage extends React.Component {
-
+  // used for toggling view
   state = {
     displayBlog: false,
     displayReservations: false
   }
-
+  // handles appropriate action based on button pressed
   handleClick = event => {
     event.preventDefault();
 

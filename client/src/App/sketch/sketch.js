@@ -2,16 +2,16 @@ import Cloud from './sketch_cloud.js';
 import Sun from './sketch_sun.js';
 
 export default function sketch (p) {
-  let stepMultiplier = 0;
-  let stepDistance = 10;
+  let stepMultiplier = 0;               // for moving the clouds, speed
+  let stepDistance = 10;                // for moving the clouds, size of step
   let width = window.outerWidth;
-  let height = window.outerHeight * 2;
-  let multiplier = (width / 10) / 140;
-  let cloud;
-  let sun;
+  let height = window.outerHeight * 2;  // canvas size
+  let multiplier = (width / 10) / 140;  // for scaling
+  let cloud;                            // for cloud object
+  let sun;                              // for sun object
 
   p.setup = function () {
-    p.createCanvas(window.outerWidth, window.outerHeight * 2);
+    p.createCanvas(width, height);
     cloud = new Cloud(p)
     sun = new Sun(p)
   };
@@ -20,21 +20,13 @@ export default function sketch (p) {
 
     p.background('white')
 
-    if (window.location.pathname === "/training") {
-      p.translate(width / 10, height / 2)
-      p.scale(multiplier)
+    if (window.location.pathname === "/training") {     // only displayed in /training page
+      p.translate(width / 10, height / 2)     // set origin
 
-      p.push()
-      p.translate(stepDistance + stepMultiplier, 0)
-      cloud.display(p)
-      p.pop()
-
+      createClouds(p, 1, 1, 0, 1)
       createClouds(p, 2, -5, -100, 1/2)
-
       createClouds(p, 6, -10, -400, 1/4)
-
       createClouds(p, 4, -40, 400, 1.25)
-
       createClouds(p, 8, -40, -600, .75)
 
       sun.display(p)

@@ -1,5 +1,5 @@
 import React from 'react';
-
+// displays all reservations to the admin user
 class Reservation extends React.Component {
   render () {
 

@@ -1,7 +1,7 @@
 import React from 'react';
-
-import './training.css';
-
+// styling
+import './Training.css';
+// used for displaying availble times
 class Availability extends React.Component {
 
   handleClick = event => {
