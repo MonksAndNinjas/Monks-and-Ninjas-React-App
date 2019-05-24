@@ -3,6 +3,10 @@ import Sun from './sketch_sun.js';
 
 export default function sketch (p) {
   let stepMultiplier = 0;
+  let stepDistance = 10;
+  let width = window.outerWidth;
+  let height = window.outerHeight * 2;
+  let multiplier = (width / 10) / 140;
   let cloud;
   let sun;
 
@@ -13,10 +17,6 @@ export default function sketch (p) {
   };
 
   p.draw = function () {
-    let width = window.outerWidth;
-    let height = window.outerHeight * 2;
-    let stepDistance = 10;
-    let multiplier = (width / 10) / 140;
 
     p.background('white')
 
@@ -29,33 +29,30 @@ export default function sketch (p) {
       cloud.display(p)
       p.pop()
 
-      p.push()
-      p.translate((stepDistance * -5) + (stepMultiplier * 2), -100)
-      p.scale(multiplier / 2)
-      cloud.display(p)
-      p.pop()
+      createClouds(p, 2, -5, -100, 1/2)
 
-      p.push()
-      p.translate((stepDistance * -10) + (stepMultiplier * 6), -400)
-      p.scale(multiplier / 4)
-      cloud.display(p)
-      p.pop()
+      createClouds(p, 6, -10, -400, 1/4)
 
-      p.push()
-      p.translate((stepDistance * -40) + (stepMultiplier * 4), 400)
-      p.scale(multiplier * 1.25)
-      cloud.display(p)
-      p.pop()
+      createClouds(p, 4, -40, 400, 1.25)
 
-      p.push()
-      p.translate((stepDistance * -40) + (stepMultiplier * 8), -600)
-      p.scale(multiplier * .75)
-      cloud.display(p)
-      p.pop()
+      createClouds(p, 8, -40, -600, .75)
 
       sun.display(p)
 
       stepMultiplier = stepMultiplier + .25;
     }
+  };
+
+  function createClouds(p, m, d, y, s) {
+    let multMagnifier = m;
+    let distMagnifier = d;
+    let yValue = y;
+    let scaleValue = s;
+
+    p.push()
+    p.translate((stepDistance * distMagnifier) + (stepMultiplier * multMagnifier), yValue)
+    p.scale(multiplier * scaleValue)
+    cloud.display(p)
+    p.pop()
   };
 };
