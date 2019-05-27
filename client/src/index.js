@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App/App.js';
 // allows use of store
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk'
 // combines and uses reducers
 import { combineReducers } from 'redux';
 import blogReducer from './reducers/blogReducer.js';
 import reservationReducer from './reducers/reservationReducer';
+import fetchAvailabilities from './reducers/fetchAvailabilities';
+import fetchServices from './reducers/fetchServices';
 // styling
 import './index.css';
 // main handlers for given routes
@@ -27,12 +30,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const rootReducer = combineReducers({
   blogPosts: blogReducer,
-  reservations: reservationReducer
+  reservations: reservationReducer,
+  availabilities: fetchAvailabilities,
+  services: fetchServices
 })
 
-const store = createStore(rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const Header = () =>
   <header><NavBar /></header>;

@@ -6,6 +6,8 @@ import Calendar from 'react-calendar';
 // connects to store
 import { connect } from 'react-redux';
 import { addReservation } from '../actions/reservations';
+import { fetchAvailabilities } from '../actions/fetch';
+import { fetchServices } from '../actions/fetch';
 // allows use of function
 import { formattedDate } from '../helpers/helpers';
 // styling
@@ -25,10 +27,9 @@ class TrainingContainer extends React.Component {
         date: ''
       }
     },
-    availableTimes: [],     // hours of operation pulled from rails api
+//    availableTimes: [],     // hours of operation pulled from rails api
     services: [],           // list of services pulled form rails api
     isHidden: true,         // used for switching between client and reservation input
-    loading: true,          // used for switching loading animation on/off
     date: new Date(),
   };
 
@@ -85,7 +86,7 @@ class TrainingContainer extends React.Component {
   };
   // checks store to remove date and times that are taken
   filterTime = (date) => {
-   var unfilteredList = this.state.availableTimes;
+   var unfilteredList = this.props.availabilities.availabilities;
    var busyList = this.props.reservations;
    // gathers all the times reserved for a specific date
    const filterByDateBusyList = busyList.filter((hash) => {
@@ -103,19 +104,18 @@ class TrainingContainer extends React.Component {
    return renderList
   }
 
-  render() {
-    let loading  = this.state.loading;
 
+  render() {
     return (
       <div className="container" >
 
-        {loading ? (
+        {this.props.services.loading ? (
             <h1>Loading...</h1>
         ) : (
           <div id="trainingWrapper">
             <h1>Training</h1>
 
-            <Services services={this.state.services} />
+            <Services services={this.props.services.services} />
 
             <h2>Make a Reservation</h2>
 
@@ -129,27 +129,17 @@ class TrainingContainer extends React.Component {
   }
 // fetch calls from Rails api
   componentDidMount() {
-    fetch('api/availabilities', {
-      accept: 'application/json',
-    }).then(response => response.json())
-      .then(data => this.setState({
-        availableTimes: data
-      }));
-
-    fetch('api/services', {
-      accept: 'application/json',
-    }).then(response => response.json())
-      .then(data => this.setState({
-        loading: false,     // is this the best place to turn loader off?
-        services: data
-      }));
+    this.props.fetchAvailabilities();
+    this.props.fetchServices();
   }
 }
 
 const mapStateToProps = state => {
   return({
+    availabilities: state.availabilities,
+    services: state.services,
     reservations: state.reservations
   })
 }
 
-export default connect(mapStateToProps, { addReservation })(TrainingContainer);
+export default connect(mapStateToProps, { fetchAvailabilities, fetchServices })(TrainingContainer);
