@@ -19,3 +19,14 @@ export function fetchServices() {
         .then(services => dispatch({ type: 'FETCH_SERVICES', payload: services }))
   }
 }
+
+export function fetchClients() {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_CLIENTS' });
+
+    return fetch('api/client_infos', {
+        accept: 'application/json',
+      }).then(response => response.json())
+        .then(clients => dispatch({ type: 'FETCH_CLIENTS', payload: clients }))
+  }
+}

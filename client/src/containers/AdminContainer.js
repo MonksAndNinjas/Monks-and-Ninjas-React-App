@@ -3,6 +3,7 @@ import Login from '../components/Admin/Login.js';
 import AdminPage from '../components/Admin/AdminPage.js';
 // connects to store
 import { connect } from 'react-redux';
+import { fetchClients } from '../actions/fetch';
 import { addBlogPost } from '../actions/posts.js';
 import { deleteBlogPost } from '../actions/posts.js';
 import { deleteReservation } from '../actions/reservations.js';
@@ -14,8 +15,6 @@ class AdminContainer extends React.Component {
   state = {
     isLoggedIn: false,      // is admin user logged in?
     user: '',               // if admin user logged in, then user id will be saved here
-    clients: [],            // list of all clients stored here
-    loading: true           // checking sessions from Rails API
   }
 // validates user and displays content for admin user
   loggedIn = (user) => {
@@ -50,22 +49,19 @@ class AdminContainer extends React.Component {
   };
 
   deleteReservation = (reservationHash) => {
-    console.log(reservationHash)
     this.props.deleteReservation(reservationHash);
   }
 // compiles list of all clients
   findClient = (clientId) => {
-    const client = this.state.clients.find( client => client.id === clientId)
+    const client = this.props.clients.clients.find( client => client.id === clientId)
     const renderClient = 'Name: ' + client.name + ' Phone: ' + client.phone + ' Email: ' + client.email
     return renderClient;
   }
 
   render() {
-    let loading  = this.state.loading
-
     return (
       <div className="container">
-        {loading ? (
+        {this.props.clients.loading ? (
           <h1>Loading...</h1>
         ) : (
           <div id="adminWrapper">
@@ -79,10 +75,7 @@ class AdminContainer extends React.Component {
   }
 // retrieves clients and sessions hash from Rails API
   componentDidMount() {
-    fetch('api/client_infos', {
-      accept: 'application/json',
-    }).then(response => response.json())
-      .then(data => this.setState({ clients: data} ));
+    this.props.fetchClients()
 
     fetch('api/users', {
       accept: 'application/json',
@@ -95,11 +88,11 @@ class AdminContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state, 'mapState')
   return({
+    clients: state.clients,
     blogPosts: state.blogPosts,
     reservations: state.reservations
   })
 }
 
-export default connect(mapStateToProps, { addBlogPost, deleteBlogPost, deleteReservation })(AdminContainer)
+export default connect(mapStateToProps, { fetchClients, addBlogPost, deleteBlogPost, deleteReservation })(AdminContainer)

@@ -11,6 +11,7 @@ import blogReducer from './reducers/blogReducer.js';
 import reservationReducer from './reducers/reservationReducer';
 import fetchAvailabilities from './reducers/fetchAvailabilities';
 import fetchServices from './reducers/fetchServices';
+import fetchClients from './reducers/fetchClients';
 // styling
 import './index.css';
 // main handlers for given routes
@@ -32,7 +33,8 @@ const rootReducer = combineReducers({
   blogPosts: blogReducer,
   reservations: reservationReducer,
   availabilities: fetchAvailabilities,
-  services: fetchServices
+  services: fetchServices,
+  clients: fetchClients
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
