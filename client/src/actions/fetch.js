@@ -38,7 +38,7 @@ export function validateUser() {
     return fetch('api/users', {
         accept: 'application/json',
       }).then(response => response.json())
-        .then(users => dispatch({ type: 'VALIDATE_USER', payload: users }))
+        .then(user => dispatch({ type: 'VALIDATE_USER', payload: user }))
   }
 }
 
@@ -54,5 +54,20 @@ export function logOut(user) {
       }).then(response => response.json())
         .then(user => dispatch({ type: 'LOGGED_OUT', payload: user }))
         .then(user => dispatch({ type: 'REMOVE_USER', payload: '' }))
+  }
+}
+
+export function logIn(userInput) {
+  return (dispatch) => {
+    dispatch({ type: 'LOGGING_IN' });
+
+    return fetch('api/users', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userInput)
+      }).then(response => response.json())
+        .then(user => dispatch({ type: 'VALIDATE_USER', payload: user }))
   }
 }

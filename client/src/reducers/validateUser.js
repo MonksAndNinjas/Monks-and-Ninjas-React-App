@@ -12,8 +12,10 @@ export default function validateUser(
       case 'VALIDATE_USER':
         return {loading: false, user: action.payload}
 
+      case 'LOGGING_IN':
+        return {...state, loading: true};
+
       case 'REMOVE_USER':
-      console.log(action)
         return {loading: false, user: action.payload}
 
       default:

@@ -5,6 +5,7 @@ import AdminPage from '../components/Admin/AdminPage.js';
 import { connect } from 'react-redux';
 import { fetchClients } from '../actions/fetch';
 import { validateUser } from '../actions/fetch';
+import { logIn } from '../actions/fetch';
 import { logOut } from '../actions/fetch';
 import { addBlogPost } from '../actions/posts.js';
 import { deleteBlogPost } from '../actions/posts.js';
@@ -13,24 +14,19 @@ import { deleteReservation } from '../actions/reservations.js';
 import { formattedDate } from '../helpers/helpers.js';
 // main handler for Admin page
 class AdminContainer extends React.Component {
-
-  state = {
-    isLoggedIn: false,      // is admin user logged in?
-    user: '',               // if admin user logged in, then user id will be saved here
-  }
 // validates user and displays content for admin user
   loggedIn = () => {
     let val = this.props.user.user
     //make sure to anticipate type of responses
-    if (val === undefined || val === null || val.length === 0 ) {
+    if (val === undefined || val === null || val.length === 0 || val.error) {
       return false
     } else {
       return true
     }
   }
 
-  display = () => {
-    this.setState({ isLoggedIn: true })
+  logIn = (userInput) => {
+    this.props.logIn(userInput)
   }
 // logout request to Rails API where sessions hash is delete
   logout = () => {
@@ -63,7 +59,7 @@ class AdminContainer extends React.Component {
         ) : (
           <div id="adminWrapper">
             <React.Fragment>
-              { this.loggedIn() ? <AdminPage reservations={this.props.reservations} formattedDate={formattedDate} blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost} findClient={this.findClient} deleteReservation={this.deleteReservation} /> : <Login display={this.display} /> }
+              { this.loggedIn() ? <AdminPage reservations={this.props.reservations} formattedDate={formattedDate} blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost} findClient={this.findClient} deleteReservation={this.deleteReservation} /> : <Login logIn={this.logIn} /> }
             </React.Fragment>
           </div>
         )}
@@ -78,7 +74,7 @@ class AdminContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  //console.log(state);
   return({
     user: state.user,
     clients: state.clients,
@@ -87,4 +83,4 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, { logOut, validateUser, fetchClients, addBlogPost, deleteBlogPost, deleteReservation })(AdminContainer)
+export default connect(mapStateToProps, { logIn, logOut, validateUser, fetchClients, addBlogPost, deleteBlogPost, deleteReservation })(AdminContainer)

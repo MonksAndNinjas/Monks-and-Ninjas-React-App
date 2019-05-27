@@ -8,12 +8,6 @@ class Login extends React.Component {
     username: '',
     password: ''
   }
-// validates response from Rails API
-  validLogIn = data => {
-    if (!data.error) {
-      this.props.display()
-    }
-  }
 
   handleChange = event => {
     event.persist()
@@ -24,15 +18,8 @@ class Login extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-// sends user input to Rails API where it is "authenticated"
-    fetch('api/users', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.state)
-    }).then(response => response.json())
-      .then(data => this.validLogIn(data))
+
+    this.props.logIn(this.state)
   }
 
   render() {
