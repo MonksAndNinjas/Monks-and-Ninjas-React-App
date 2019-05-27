@@ -4,6 +4,8 @@ import AdminPage from '../components/Admin/AdminPage.js';
 // connects to store
 import { connect } from 'react-redux';
 import { fetchClients } from '../actions/fetch';
+import { validateUser } from '../actions/fetch';
+import { logOut } from '../actions/fetch';
 import { addBlogPost } from '../actions/posts.js';
 import { deleteBlogPost } from '../actions/posts.js';
 import { deleteReservation } from '../actions/reservations.js';
@@ -17,27 +19,22 @@ class AdminContainer extends React.Component {
     user: '',               // if admin user logged in, then user id will be saved here
   }
 // validates user and displays content for admin user
-  loggedIn = (user) => {
-    if (user) {
-      this.setState({ user: user });
-
-      this.display();
+  loggedIn = () => {
+    let val = this.props.user.user
+    //make sure to anticipate type of responses
+    if (val === undefined || val === null || val.length === 0 ) {
+      return false
+    } else {
+      return true
     }
   }
 
   display = () => {
     this.setState({ isLoggedIn: true })
   }
-// logout request to Rails API where sessions hash is deleted
+// logout request to Rails API where sessions hash is delete
   logout = () => {
-    fetch('api/users/' + this.state.user, {
-      method: "delete",
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })  // should I add a validation of sorts in case was not logged out
-
-    this.setState({ isLoggedIn: false });
+    this.props.logOut(this.props.user.user);
   }
 
   addBlogPost = (postHash) => {
@@ -66,7 +63,7 @@ class AdminContainer extends React.Component {
         ) : (
           <div id="adminWrapper">
             <React.Fragment>
-              { this.state.isLoggedIn ? <AdminPage reservations={this.props.reservations} formattedDate={formattedDate} blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost} findClient={this.findClient} deleteReservation={this.deleteReservation} /> : <Login display={this.display} /> }
+              { this.loggedIn() ? <AdminPage reservations={this.props.reservations} formattedDate={formattedDate} blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost} findClient={this.findClient} deleteReservation={this.deleteReservation} /> : <Login display={this.display} /> }
             </React.Fragment>
           </div>
         )}
@@ -76,23 +73,18 @@ class AdminContainer extends React.Component {
 // retrieves clients and sessions hash from Rails API
   componentDidMount() {
     this.props.fetchClients()
-
-    fetch('api/users', {
-      accept: 'application/json',
-    }).then(response => response.json())
-      .then(data => this.loggedIn(data))
-      .then(data => this.setState({
-        loading: false,     // is this the best place to turn loader off?
-      }));
+    this.props.validateUser()
   }
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return({
+    user: state.user,
     clients: state.clients,
     blogPosts: state.blogPosts,
     reservations: state.reservations
   })
 }
 
-export default connect(mapStateToProps, { fetchClients, addBlogPost, deleteBlogPost, deleteReservation })(AdminContainer)
+export default connect(mapStateToProps, { logOut, validateUser, fetchClients, addBlogPost, deleteBlogPost, deleteReservation })(AdminContainer)

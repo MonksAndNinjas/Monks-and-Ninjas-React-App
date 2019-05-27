@@ -1,16 +1,16 @@
-export default function fetchClients(
+export default function logOutReducer(
   state = {
     loading: false,
-    clients: []
+    status: ''
   }, action) {
     switch (action.type) {
 
-      case 'LOADING_CLIENTS':
+      case 'LOGGING_OUT':
 
         return {...state, loading: true};
 
-      case 'FETCH_CLIENTS':
-        return {loading: false, clients: action.payload}
+      case 'LOGGED_OUT':
+        return {loading: false, status: action.payload.message}
 
       default:
         return state;

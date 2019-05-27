@@ -30,3 +30,29 @@ export function fetchClients() {
         .then(clients => dispatch({ type: 'FETCH_CLIENTS', payload: clients }))
   }
 }
+
+export function validateUser() {
+  return (dispatch) => {
+    dispatch({ type: 'VALIDATING_USER' });
+
+    return fetch('api/users', {
+        accept: 'application/json',
+      }).then(response => response.json())
+        .then(users => dispatch({ type: 'VALIDATE_USER', payload: users }))
+  }
+}
+
+export function logOut(user) {
+  return (dispatch) => {
+    dispatch({ type: 'LOGGING_OUT' });
+
+    return fetch('api/users/' + user, {
+        method: "delete",
+        headers: {
+        'Content-Type': 'application/json'
+      },
+      }).then(response => response.json())
+        .then(user => dispatch({ type: 'LOGGED_OUT', payload: user }))
+        .then(user => dispatch({ type: 'REMOVE_USER', payload: '' }))
+  }
+}

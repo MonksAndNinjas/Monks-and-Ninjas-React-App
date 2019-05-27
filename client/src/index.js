@@ -12,6 +12,8 @@ import reservationReducer from './reducers/reservationReducer';
 import fetchAvailabilities from './reducers/fetchAvailabilities';
 import fetchServices from './reducers/fetchServices';
 import fetchClients from './reducers/fetchClients';
+import validateUser from './reducers/validateUser';
+import logOutReducer from './reducers/logOutReducer';
 // styling
 import './index.css';
 // main handlers for given routes
@@ -34,7 +36,9 @@ const rootReducer = combineReducers({
   reservations: reservationReducer,
   availabilities: fetchAvailabilities,
   services: fetchServices,
-  clients: fetchClients
+  clients: fetchClients,
+  user: validateUser,
+  status: logOutReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
