@@ -1,3 +1,4 @@
+// API calls to retrieve information
 export function fetchAvailabilities() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_AVAILABILITIES' });

@@ -1,3 +1,4 @@
+// handles all reservation actions
 export const addReservation = (reservation) => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_RESERVATIONS' });

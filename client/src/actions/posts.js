@@ -1,3 +1,4 @@
+// handles all blog actions
 export const addBlogPost = (blogPost) => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_POSTS' });
