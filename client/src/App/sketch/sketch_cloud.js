@@ -5,7 +5,7 @@ export default class Cloud {
 
     p.fill('white')
     p.rect(50, 90, 200, 100)
-    p.fill(173, 216, 230, 20)
+    p.fill(173, 216, 230, 30)
     p.rect(50, 90, 200, 100)
     p.triangle(0, 170, -100, 170, 0, 150)
 
@@ -45,7 +45,7 @@ export default class Cloud {
   cloudBubble(p, x, y, w, h) {
     p.fill('white')
     p.ellipse(x, y, w, h)
-    p.fill(173, 216, 230, 20)
+    p.fill(173, 216, 230, 30)
     p.ellipse(x, y, w, h)
   }
 }

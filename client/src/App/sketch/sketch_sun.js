@@ -2,8 +2,8 @@ export default class Sun {
 
   display(p) {
     // used for making gradient of sun
-    let from = p.color(255, 204, 0, 4);
-    let to = p.color(255, 250, 250, 4);
+    let from = p.color(255, 204, 0, 10);
+    let to = p.color(255, 250, 250, 10);
     let inter = p.lerpColor(from, to, .1)
 
     p.fill(inter)

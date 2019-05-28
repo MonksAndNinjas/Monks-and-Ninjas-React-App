@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // for displaying sketch in training page
-import sketch from './sketch/sketch';
+import sketch from './sketch/sketch.js';
 import P5Wrapper from 'react-p5-wrapper';
 import './sketch/sketch.css';
 // for connecting to store

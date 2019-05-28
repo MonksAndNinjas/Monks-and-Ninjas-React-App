@@ -20,8 +20,10 @@ export default function sketch (p) {
 
     p.background('white')
 
-    if (window.location.pathname === "/training") {     // only displayed in /training page
+    if (window.location.pathname === "/admin") {     // only displayed in /training page
       p.translate(width / 10, height / 2)     // set origin
+
+      sun.display(p)
 
       createClouds(p, 1, 1, 0, 1)
       createClouds(p, 2, -5, -100, 1/2)
@@ -29,7 +31,7 @@ export default function sketch (p) {
       createClouds(p, 4, -40, 400, 1.25)
       createClouds(p, 8, -40, -600, .75)
 
-      sun.display(p)
+
 
       stepMultiplier = stepMultiplier + .25;
     }
