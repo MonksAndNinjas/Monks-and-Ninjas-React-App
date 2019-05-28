@@ -10,6 +10,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="dropdown">
+
       <img src={logo} className="dropbtn" style={{ width: '5%', height: '5%' }} alt={logo} />
         <div className="dropdown-content">
           <NavLink to="/" exact activeStyle={{ background: 'grey' }}>Home</NavLink>
@@ -19,7 +20,7 @@ class NavBar extends React.Component {
           <NavLink to="/contact" exact activeStyle={{ background: 'grey' }}>Contact</NavLink>
         </div>
       </div>
-    )
+    );
   }
 }
 

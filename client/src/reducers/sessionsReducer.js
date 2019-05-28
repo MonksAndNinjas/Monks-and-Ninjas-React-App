@@ -1,4 +1,4 @@
-export default function validateUser(
+export default function sessionsReducer(
   state = {
     loading: false,
     user: ''
@@ -16,6 +16,12 @@ export default function validateUser(
 
       case 'REMOVE_USER':
         return {loading: false, user: action.payload}
+
+      case 'LOGGING_OUT':
+          return {...state, loading: true};
+
+      case 'LOGGED_OUT':
+          return {loading: false, status: action.payload.message}
 
       default:
         return state;

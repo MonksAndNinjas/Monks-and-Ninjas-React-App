@@ -6,7 +6,6 @@ export default function fetchReducer(
     switch (action.type) {
 
       case 'LOADING_AVAILABILITIES':
-
         return {...state, loading: true};
 
       case 'FETCH_AVAILABILITES':

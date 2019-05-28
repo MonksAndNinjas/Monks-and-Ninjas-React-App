@@ -4,7 +4,12 @@ class Reservation extends React.Component {
   render () {
 
     const renderReservations = this.props.reservations.map((reservation, index) => (
-      <ul id={`reservation-${index}`} key={index}><li>Time: {reservation.time}</li><li>Date: {reservation.date}</li><li>{this.props.findClient(reservation.client_info_id)}</li><button onClick={() => this.props.delete(reservation)}>DELETE</button></ul>
+      <ul id={`reservation-${index}`} key={index}>
+        <li>Time: {reservation.time}</li>
+        <li>Date: {reservation.date}</li>
+        <li>{this.props.findClient(reservation.client_info_id)}</li>
+        <button onClick={() => this.props.delete(reservation)}>DELETE</button>
+      </ul>
     ));
 
     return (
@@ -13,8 +18,8 @@ class Reservation extends React.Component {
 
         {renderReservations}
       </div>
-    )
+    );
   }
 }
 
-export default Reservation
+export default Reservation;

@@ -1,7 +1,7 @@
 import React from 'react';
-import BlogInput from '../Blog/BlogInput.js';
-import Blog from '../Blog/Blog.js';
-import Reservation from './Reservation.js';
+import BlogInput from '../Blog/BlogInput';
+import Blog from '../Blog/Blog';
+import Reservation from './Reservation';
 // styling
 import './Admin.css';
 // handles what to display on the AdminPage: blog or reservations
@@ -37,21 +37,26 @@ class AdminPage extends React.Component {
         <h1>Admin page</h1>
 
         { this.state.displayBlog ? (
-          <div className="adminMenu">
-            <BlogInput formattedDate={this.props.formattedDate} addBlogPost={this.props.addBlogPost} />
-            <Blog blogPosts={this.props.blogPosts} delete={this.props.delete} enableDelete={false}/>
-          </div>
-          ) : <button name='blog' onClick={event => this.handleClick(event)}>Blog</button>}
+            <div className="adminMenu">
+              <BlogInput formattedDate={this.props.formattedDate} addBlogPost={this.props.addBlogPost} />
+              <Blog blogPosts={this.props.blogPosts} delete={this.props.delete} enableDelete={false}/>
+            </div>
+          ) : (
+            <button name='blog' onClick={event => this.handleClick(event)}>Blog</button>
+        )}
+
         { this.state.displayReservations ? (
-          <div className="adminMenu">
-            <Reservation reservations={this.props.reservations} findClient={this.props.findClient} delete={this.props.deleteReservation} />
-          </div>
-        ) : <button name='reservations' onClick={event => this.handleClick(event)}>Reservations</button>}
+            <div className="adminMenu">
+              <Reservation reservations={this.props.reservations} findClient={this.props.findClient} delete={this.props.deleteReservation} />
+              </div>
+            ) : (
+              <button name='reservations' onClick={event => this.handleClick(event)}>Reservations</button>
+        )}
 
         <button onClick={event => this.handleClick(event)}>Log Out</button>
       </>
-    )
+    );
   }
 }
 
-export default AdminPage
+export default AdminPage;

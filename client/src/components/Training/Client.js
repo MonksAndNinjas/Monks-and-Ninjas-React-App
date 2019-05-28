@@ -20,6 +20,7 @@ class Client extends React.Component {
     return (
       <div id="clientInput">
         <p style={{ color: 'red' }}>* Now your information *</p>
+
         <form onSubmit={event => this.handleClientSubmit(event)}>
           <label>
             Name
@@ -36,7 +37,7 @@ class Client extends React.Component {
           <button type="submit">Submit</button>
         </form>
       </div>
-    )
+    );
   }
 }
 

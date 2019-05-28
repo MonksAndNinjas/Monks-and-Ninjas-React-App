@@ -6,7 +6,6 @@ export default function fetchClients(
     switch (action.type) {
 
       case 'LOADING_CLIENTS':
-
         return {...state, loading: true};
 
       case 'FETCH_CLIENTS':

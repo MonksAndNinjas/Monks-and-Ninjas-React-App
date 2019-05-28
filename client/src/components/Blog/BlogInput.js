@@ -40,7 +40,7 @@ class BlogInput extends React.Component {
           <button type="submit">Submit Post</button>
         </form>
       </div>
-    )
+    );
   }
 }
 

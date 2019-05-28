@@ -1,22 +1,22 @@
 import React from 'react';
-import Login from '../components/Admin/Login.js';
-import AdminPage from '../components/Admin/AdminPage.js';
+import Login from '../components/Admin/Login';
+import AdminPage from '../components/Admin/AdminPage';
 // connects to store
 import { connect } from 'react-redux';
 import { fetchClients } from '../actions/fetch';
-import { validateUser } from '../actions/fetch';
-import { logIn } from '../actions/fetch';
-import { logOut } from '../actions/fetch';
-import { addBlogPost } from '../actions/posts.js';
-import { deleteBlogPost } from '../actions/posts.js';
-import { deleteReservation } from '../actions/reservations.js';
+import { validateUser } from '../actions/sessions';
+import { logIn } from '../actions/sessions';
+import { logOut } from '../actions/sessions';
+import { addBlogPost } from '../actions/posts';
+import { deleteBlogPost } from '../actions/posts';
+import { deleteReservation } from '../actions/reservations';
 // allows use of function
-import { formattedDate } from '../helpers/helpers.js';
+import { formattedDate } from '../helpers/helpers';
 // main handler for Admin page
 class AdminContainer extends React.Component {
-// validates user and displays content for admin user
+  // validates user and displays content for admin user
   loggedIn = () => {
-    let val = this.props.user.user
+    let val = this.props.userHash.user
     //make sure to anticipate type of responses
     if (val === undefined || val === null || val.length === 0 || val.error) {
       return false
@@ -28,11 +28,11 @@ class AdminContainer extends React.Component {
   logIn = (userInput) => {
     this.props.logIn(userInput)
   }
-// logout request to Rails API where sessions hash is delete
-  logout = () => {
-    this.props.logOut(this.props.user.user);
-  }
 
+  logout = () => {
+    this.props.logOut(this.props.userHash.user);
+  }
+  // blog actions
   addBlogPost = (postHash) => {
     this.props.addBlogPost(postHash);
   };
@@ -40,26 +40,40 @@ class AdminContainer extends React.Component {
   deleteBlogPost = (postHash) => {
     this.props.deleteBlogPost(postHash);
   };
-
+  // reservation action
   deleteReservation = (reservationHash) => {
     this.props.deleteReservation(reservationHash);
   }
 // compiles list of all clients
   findClient = (clientId) => {
-    const client = this.props.clients.clients.find( client => client.id === clientId)
+    const client = this.props.clientsHash.clients.find( client => client.id === clientId)
     const renderClient = 'Name: ' + client.name + ' Phone: ' + client.phone + ' Email: ' + client.email
+
     return renderClient;
   }
 
   render() {
     return (
       <div className="container">
-        {this.props.clients.loading ? (
+        {this.props.clientsHash.loading ? (
           <h1>Loading...</h1>
         ) : (
           <div id="adminWrapper">
             <React.Fragment>
-              { this.loggedIn() ? <AdminPage reservations={this.props.reservations.reservations} formattedDate={formattedDate} blogPosts={this.props.blogPosts.posts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost} findClient={this.findClient} deleteReservation={this.deleteReservation} /> : <Login logIn={this.logIn} /> }
+              { this.loggedIn() ? (
+                  <AdminPage
+                    reservations={this.props.reservationsHash.reservations}
+                    formattedDate={formattedDate}
+                    blogPosts={this.props.postsHash.posts}
+                    addBlogPost={this.addBlogPost}
+                    logout={this.logout}
+                    delete={this.deleteBlogPost}
+                    findClient={this.findClient}
+                    deleteReservation={this.deleteReservation}
+                   />
+                ) : (
+                  <Login logIn={this.logIn} />
+              )}
             </React.Fragment>
           </div>
         )}
@@ -75,11 +89,18 @@ class AdminContainer extends React.Component {
 
 const mapStateToProps = state => {
   return({
-    user: state.user,
-    clients: state.clients,
-    blogPosts: state.blogPosts,
-    reservations: state.reservations
+    userHash: state.user,
+    clientsHash: state.clients,
+    postsHash: state.blogPosts,
+    reservationsHash: state.reservations
   })
 }
 
-export default connect(mapStateToProps, { logIn, logOut, validateUser, fetchClients, addBlogPost, deleteBlogPost, deleteReservation })(AdminContainer)
+export default connect(mapStateToProps, {
+                          logIn, logOut,
+                          validateUser,
+                          fetchClients,
+                          addBlogPost,
+                          deleteBlogPost,
+                          deleteReservation
+                        })(AdminContainer)

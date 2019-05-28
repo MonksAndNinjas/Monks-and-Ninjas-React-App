@@ -11,9 +11,8 @@ class Login extends React.Component {
 
   handleChange = event => {
     event.persist()
-    this.setState({
-      [event.target.name]: event.target.value,
-    })
+
+    this.setState({ [event.target.name]: event.target.value, })
   }
 
   handleSubmit = event => {
@@ -26,6 +25,7 @@ class Login extends React.Component {
     return (
       <div id="adminLogin">
         <h1>Admin Login</h1>
+
         <form onSubmit={event => this.handleSubmit(event)}>
           <label>
             Username
@@ -38,8 +38,8 @@ class Login extends React.Component {
           <button type="submit">Login</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
-export default Login
+export default Login;

@@ -6,7 +6,6 @@ export default function fetchServices(
     switch (action.type) {
 
       case 'LOADING_SERVICES':
-
         return {...state, loading: true};
 
       case 'FETCH_SERVICES':
