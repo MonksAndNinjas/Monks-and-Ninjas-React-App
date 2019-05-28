@@ -25,6 +25,6 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     post.destroy
 
-    render json: "Post successfully deleted"
+    render json: { message: 'Post successfully deleted' }
   end
 end

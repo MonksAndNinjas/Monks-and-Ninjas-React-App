@@ -13,7 +13,7 @@ class Blog extends React.Component {
     return (
       <div id="blogWrapper">
         <h2>Blog Archive</h2>
-        
+
         { renderPosts }
       </div>
     )

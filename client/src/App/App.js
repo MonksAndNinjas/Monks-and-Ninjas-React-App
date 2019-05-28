@@ -5,18 +5,10 @@ import P5Wrapper from 'react-p5-wrapper';
 import './sketch/sketch.css';
 // for connecting to store
 import { connect } from 'react-redux';
-import { addBlogPost } from '../actions/posts.js';
-import { addReservation } from '../actions/reservations';
+import { fetchBlogPosts } from '../actions/fetch.js';
+import { fetchReservations } from '../actions/fetch.js';
 // gathers necessary data from Rails API for admin use and places in store
 class App extends Component {
-
-  addBlogPost = (post) => {
-    this.props.addBlogPost(post);
-  };
-
-  addReservation = (reservation) => {
-    this.props.addReservation(reservation);
-  };
 
   render() {
     return (
@@ -27,22 +19,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('api/posts', {
-      accept: 'application/json',
-    }).then(response => response.json())
-      .then(data => data.forEach(post => this.addBlogPost(post)))
-
-    fetch('api/reservations', {
-      accept: 'application/json',
-    }).then(response => response.json())
-      .then(data => data.forEach(reservation => this.addReservation(reservation)));
+    this.props.fetchBlogPosts()
+    this.props.fetchReservations()
   }
 }
 
 const mapStateToProps = state => {
   return({
+    reservations: state.reservations,
     blogPosts: state.blogPosts
   })
 }
 
-export default connect(mapStateToProps, { addBlogPost, addReservation })(App);
+export default connect(mapStateToProps, { fetchBlogPosts, fetchReservations })(App);

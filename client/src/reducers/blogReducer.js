@@ -1,23 +1,25 @@
-export default function blogReducer(state = [], action) {
-  switch (action.type) {
+export default function blogReducer(
+  state = {
+    loading: false,
+    posts: []
+  }, action) {
+    switch (action.type) {
 
-    case 'ADD_BLOG_POST':
-      return [...state, action.blogPost]
+      case 'LOADING_POSTS':
+        return {...state, loading: true};
 
-    case 'DELETE_BLOG_POST':
-      const posts = state.filter(post => post.id !== action.blogPost.id)
+      case 'FETCH_BLOG_POSTS':
+        return {loading: false, posts: action.payload}
 
-      fetch('api/posts/' + action.blogPost.id, {
-        method: "delete",
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      case 'ADD_BLOG_POST':
+        return {loading: false, posts: [...state.posts, action.payload] }
 
-      return posts
+      case 'DELETE_BLOG_POST':
+        const posts = state.posts.filter(post => post.id !== action.payload.id)
 
-    default:
-      return state;
+        return {loading: false, posts: posts }
 
+      default:
+        return state;
   }
 };

@@ -27,8 +27,6 @@ class TrainingContainer extends React.Component {
         date: ''
       }
     },
-//    availableTimes: [],     // hours of operation pulled from rails api
-    services: [],           // list of services pulled form rails api
     isHidden: true,         // used for switching between client and reservation input
     date: new Date(),
   };
@@ -64,30 +62,12 @@ class TrainingContainer extends React.Component {
   handleClientSubmit = event => {
     this.setState({ isHidden: !this.state.isHidden })
 
-    fetch('api/client_infos', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.state.client)
-    }).then(response => response.json())
-      .then(data => this.didItSave(data))
+    this.props.addReservation(this.state.client)
   }
-  // double checks for errors
-  // add send email notification to administrator that reservation was made
-  didItSave = (data) => {
-    if (data[0] !==  "not available") {
-      this.addReservation(data.reservation)
-    }
-  }
-  // reservation and client is successful and reservation is entered into store
-  addReservation = (resHash) => {
-    this.props.addReservation(resHash);
-  };
   // checks store to remove date and times that are taken
   filterTime = (date) => {
    var unfilteredList = this.props.availabilities.availabilities;
-   var busyList = this.props.reservations;
+   var busyList = this.props.reservations.reservations;
    // gathers all the times reserved for a specific date
    const filterByDateBusyList = busyList.filter((hash) => {
      return hash.date === date
@@ -142,4 +122,4 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, { fetchAvailabilities, fetchServices })(TrainingContainer);
+export default connect(mapStateToProps, { addReservation, fetchAvailabilities, fetchServices })(TrainingContainer);

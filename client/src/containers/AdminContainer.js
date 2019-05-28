@@ -59,7 +59,7 @@ class AdminContainer extends React.Component {
         ) : (
           <div id="adminWrapper">
             <React.Fragment>
-              { this.loggedIn() ? <AdminPage reservations={this.props.reservations} formattedDate={formattedDate} blogPosts={this.props.blogPosts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost} findClient={this.findClient} deleteReservation={this.deleteReservation} /> : <Login logIn={this.logIn} /> }
+              { this.loggedIn() ? <AdminPage reservations={this.props.reservations.reservations} formattedDate={formattedDate} blogPosts={this.props.blogPosts.posts} addBlogPost={this.addBlogPost} logout={this.logout} delete={this.deleteBlogPost} findClient={this.findClient} deleteReservation={this.deleteReservation} /> : <Login logIn={this.logIn} /> }
             </React.Fragment>
           </div>
         )}
@@ -74,7 +74,6 @@ class AdminContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  //console.log(state);
   return({
     user: state.user,
     clients: state.clients,

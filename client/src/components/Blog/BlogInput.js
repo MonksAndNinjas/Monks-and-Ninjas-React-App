@@ -20,14 +20,7 @@ class BlogInput extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    fetch('api/posts', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.state)
-    }).then(response => response.json())
-      .then(data => this.props.onSubmit(data))
+    this.props.addBlogPost(this.state)
   }
 
   render() {

@@ -6,7 +6,6 @@ export default function validateUser(
     switch (action.type) {
 
       case 'VALIDATING_USER':
-
         return {...state, loading: true};
 
       case 'VALIDATE_USER':

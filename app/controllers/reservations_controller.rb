@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
     reservation = Reservation.find(params[:id])
     reservation.destroy
 
-    render json: "Reservation successfully deleted"
+    render json: {message: 'Reservation successfully deleted'}
   end
 
 end

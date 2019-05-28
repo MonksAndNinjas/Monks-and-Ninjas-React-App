@@ -1,23 +1,26 @@
-export default function reservationReducer(state = [], action) {
-  switch (action.type) {
+export default function reservationReducer(
+  state = {
+    loading: false,
+    reservations: []
+  }, action) {
+    switch (action.type) {
 
-    case 'ADD_RESERVATION':
-      return [...state, action.reservation]
+      case 'LOADING_RESERVATIONS':
+        return {...state, loading: true};
 
-    case 'DELETE_RESERVATION':
-      const reservations = state.filter(reservation => reservation.id !== action.reservation.id);
+      case 'FETCH_RESERVATIONS':
+        return {loading: false, reservations: action.payload};
 
-      fetch('api/reservations/' + action.reservation.id, {
-        method: "delete",
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      case 'ADD_RESERVATION':
+        return {loading: false, reservations: [...state.reservations, action.payload.reservation]}
 
-      return reservations
+      case 'DELETE_RESERVATION':
+        const reservations = state.reservations.filter(reservation => reservation.id !== action.payload.id);
 
-    default:
-      return state;
+        return {loading: false, reservations: reservations }
+
+      default:
+        return state;
 
   }
 };

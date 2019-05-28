@@ -38,7 +38,7 @@ class AdminPage extends React.Component {
 
         { this.state.displayBlog ? (
           <div className="adminMenu">
-            <BlogInput formattedDate={this.props.formattedDate} onSubmit={this.props.addBlogPost} />
+            <BlogInput formattedDate={this.props.formattedDate} addBlogPost={this.props.addBlogPost} />
             <Blog blogPosts={this.props.blogPosts} delete={this.props.delete} enableDelete={false}/>
           </div>
           ) : <button name='blog' onClick={event => this.handleClick(event)}>Blog</button>}
