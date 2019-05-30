@@ -18,7 +18,7 @@ import 'isomorphic-fetch';
 class TrainingContainer extends React.Component {
 
   state = {
-    client: {               // clientHash that used for making reserations
+    client: {               // clientHash used for making resevrations
       name: '',
       phoneNumber: '',
       email: '',
@@ -126,7 +126,7 @@ class TrainingContainer extends React.Component {
       </div>
     );
   }
-  // fetch calls from Rails api
+  // fetch calls to Rails api
   componentDidMount() {
     this.props.fetchAvailabilities();
     this.props.fetchServices();
